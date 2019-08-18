@@ -1,4 +1,4 @@
-import React from 'react';
+import React from './node_modules/react';
 import './ShopingCart.css';
 
 const ShopingCart = function(props) {

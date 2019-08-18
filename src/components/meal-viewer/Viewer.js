@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../card-component/Card';
+import Card from '../Card/Card';
 import './Viewer.css';
 
 /*

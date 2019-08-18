@@ -2,8 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Header from './components/header-component/Header';
-import Viewer from './components/meal-viewer/Viewer';
+import Header from './components/Header/Header';
+import Viewer from './components/Meal-Viewer/Viewer';
 import {getFoods} from './service/food';
 
 function App() {
