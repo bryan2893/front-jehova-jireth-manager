@@ -3,11 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 
 import Header from './header-component/Header';
+import Viewer from './meal-viewer/Viewer';
+import {getFoods} from './service/food';
 
 function App() {
   return (
     <div className="App">
       <Header/>
+      <Viewer foodList = {getFoods()}/>
     </div>
   );
 }
