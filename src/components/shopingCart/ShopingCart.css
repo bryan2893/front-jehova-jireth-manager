@@ -1,0 +1,8 @@
+.ShopingCart-container{
+    position: absolute;
+    right: 0px;
+    width: 30%;
+    height: 100%;
+    background-color: yellow;
+    display: inline-block;
+}

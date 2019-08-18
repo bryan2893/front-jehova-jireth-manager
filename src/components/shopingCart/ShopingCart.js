@@ -1,9 +1,10 @@
-import React from './node_modules/react';
+import React from 'react';
 import './ShopingCart.css';
 
 const ShopingCart = function(props) {
     return (
-        <p>Shoping cart</p>
+        <div className="ShopingCart-container">
+        </div>
     );
 }
 

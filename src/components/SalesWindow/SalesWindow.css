@@ -1,0 +1,7 @@
+.SalesWindow-container{
+    position: relative;
+    width: 90%;
+    height: 80vh;
+    margin: 0 auto;
+    background-color: khaki;
+}

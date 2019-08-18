@@ -28,7 +28,8 @@
 
 .Card-div:hover .Card-p{
     visibility: visible;
-    top:100%;
+    top:0%;
+    left: 100%;
     z-index: 1;
     animation: fadeIn .5s;
 }
@@ -42,4 +43,21 @@
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+@media only screen and (max-width: 700px) {
+    /* For tablets: */
+    .Card-img{
+        width: 45px;
+        height: 45px;
+    }
+
+    .Card-div{
+        width: 70px;
+        height: 70px;
+    }
+
+    .Card-p{
+        font-size: .8em;
+    }
 }
