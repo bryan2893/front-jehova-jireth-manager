@@ -1,6 +1,6 @@
 .Card-img{
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     position: relative;
 }
 
@@ -8,8 +8,8 @@
     display: inline-block;
     padding: 0;
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 70px;
+    height: 70px;
     border-style: solid;
     border-color: black;
     text-align: center;
@@ -45,8 +45,27 @@
     to {opacity:1 ;}
 }
 
-@media only screen and (max-width: 700px) {
-    /* For tablets: */
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+    .Card-img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .Card-div{
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
     .Card-img{
         width: 45px;
         height: 45px;
@@ -60,4 +79,44 @@
     .Card-p{
         font-size: .8em;
     }
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 700px) and (max-width: 1024px) {
+    .Card-img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .Card-div{
+        width: 65px;
+        height: 65px;
+    }
+
+    .Card-p{
+        font-size: .8em;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 699px) {
+    .Card-img{
+        width: 35px;
+        height: 35px;
+    }
+
+    .Card-div{
+        width: 60px;
+        height: 60px;
+    }
+
+    .Card-p{
+        font-size: .8em;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
 }
