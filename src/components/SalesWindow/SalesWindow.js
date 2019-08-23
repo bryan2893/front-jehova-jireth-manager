@@ -1,8 +1,8 @@
 import React from 'react';
 import './SalesWindow.css';
 
-import Viewer from '../Meal-Viewer/Viewer';
-import ShopingCart from '../ShopingCart/ShopingCart';
+import Viewer from '../meal-viewer/Viewer';
+import ShopingCart from '../shopingCart/ShopingCart';
 import {getFoods} from '../../service/food';
 
 const SalesWindow = function(props){
