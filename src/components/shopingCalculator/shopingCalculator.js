@@ -9,7 +9,7 @@ const ShopingCalculator = function (props) {
             <div className="shopingCalculator-imgContainer">
                 <img className="shopingCalculator-image" src={hamburguesaImage} />
             </div>
-            <div className=".shopingCalculator-calculatorButtonsContainer">
+            <div className="shopingCalculator-calculatorButtonsContainer">
                 <input type="text" placeholder="cantidad..."/>
                 <div className="shopingCalculator-buttonRow">
                     <button>1</button>
