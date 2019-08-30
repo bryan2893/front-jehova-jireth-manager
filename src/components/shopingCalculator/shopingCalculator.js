@@ -1,11 +1,22 @@
 import React from 'react';
 import './shopingCalculator.css';
-import hamburguesaImage from '../../test-images/hamburguesa.png'
+import hamburguesaImage from '../../test-images/hamburguesa.png';
+
+import {connect} from 'react-redux';
+
+/*
+const mapStateToProps = state => {
+    return {calculator:state.salesWindowState.calculator}
+};
+*/
 
 const ShopingCalculator = function (props) {
-
+    let isOpen = "visible";
+    if(props.calculatorProperties.isOpen){
+        isOpen = "hidden";
+    }
     return (
-        <div className="shopingCalculator-container">
+        <div className="shopingCalculator-container" style={{visibility:isOpen}}>
             <div className="shopingCalculator-imgContainer">
                 <img className="shopingCalculator-image" src={hamburguesaImage} />
             </div>
@@ -33,5 +44,7 @@ const ShopingCalculator = function (props) {
         </div>
     );
 };
+
+//const ShopingCalculator = connect(mapStateToProps)(ShopingCalculatorConnected);
 
 export default ShopingCalculator;

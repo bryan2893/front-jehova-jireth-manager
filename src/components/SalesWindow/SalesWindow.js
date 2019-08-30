@@ -17,7 +17,7 @@ const connectedSalesWindow = function({salesWindowState}){
         <div className = "SalesWindow-container">
             <Viewer foodList={salesWindowState.actualFoodList}/>
             <ShopingCart></ShopingCart>
-            <ShopingCalculator/>
+            <ShopingCalculator calculatorProperties={salesWindowState.calculator}/>
         </div>
     );
 };

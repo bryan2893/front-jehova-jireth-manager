@@ -6,7 +6,11 @@ import {getFoods} from '../../service/food';
 const initialState = {
     salesWindowState:{
         filter:"",
-        actualFoodList:getFoods()
+        actualFoodList:getFoods(),
+        calculator:{
+            isOpen:true,
+            foodObject:null,
+        }
     },
     articles: []
 };
