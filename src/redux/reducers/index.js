@@ -1,4 +1,4 @@
-import { ADD_ARTICLE } from '../constants/action-types';
+import { ADD_ARTICLE, SET_PRODUCT_TO_CALCULATOR } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -20,6 +20,14 @@ function rootReducer(state = initialState, action) {
     if (action.type === ADD_ARTICLE) {
         return Object.assign({}, state, {
             articles: state.articles.concat(action.payload)
+        });
+    }
+
+    if (action.type === SET_PRODUCT_TO_CALCULATOR) {
+        //Agregar funcionalidad para agregar producto a la calculadora.
+
+        return Object.assign({}, state, {
+            salesWindowState: state.articles.concat(action.payload)
         });
     }
 
