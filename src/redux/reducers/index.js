@@ -1,6 +1,13 @@
 import { ADD_ARTICLE } from '../constants/action-types';
 
+//PRUEBA
+import {getFoods} from '../../service/food';
+
 const initialState = {
+    salesWindowState:{
+        filter:"",
+        actualFoodList:getFoods()
+    },
     articles: []
 };
 

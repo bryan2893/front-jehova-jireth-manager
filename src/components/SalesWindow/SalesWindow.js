@@ -3,18 +3,25 @@ import './SalesWindow.css';
 
 import Viewer from '../meal-viewer/Viewer';
 import ShopingCart from '../shopingCart/ShopingCart';
-import {getFoods} from '../../service/food';
 import ShopingCalculator from '../shopingCalculator/shopingCalculator';
 
-const SalesWindow = function(props){
+import {connect} from 'react-redux';
+
+const mapStateToProps = state => {
+    return {salesWindowState:state.salesWindowState}
+};
+
+const connectedSalesWindow = function({salesWindowState}){
     
     return (
         <div className = "SalesWindow-container">
-            <Viewer foodList={getFoods()}/>
+            <Viewer foodList={salesWindowState.actualFoodList}/>
             <ShopingCart></ShopingCart>
             <ShopingCalculator/>
         </div>
     );
 };
+
+const SalesWindow = connect(mapStateToProps)(connectedSalesWindow);
 
 export default SalesWindow;
