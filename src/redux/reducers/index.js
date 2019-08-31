@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, SET_PRODUCT_TO_CALCULATOR } from '../constants/action-types';
+import { ADD_ARTICLE, SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -8,8 +8,8 @@ const initialState = {
         filter:"",
         actualFoodList:getFoods(),
         calculator:{
-            isOpen:true,
-            foodObject:null,
+            isOpen:false,
+            foodObject:{},
         }
     },
     articles: []
@@ -24,13 +24,17 @@ function rootReducer(state = initialState, action) {
     }
 
     if (action.type === SET_PRODUCT_TO_CALCULATOR) {
-        //Agregar funcionalidad para agregar producto a la calculadora.
-
         return Object.assign({}, state, {
-            salesWindowState: state.articles.concat(action.payload)
+            salesWindowState: Object.assign({},state.salesWindowState,{calculator:{isOpen:true,foodObject:action.payload}})
         });
     }
 
+    if (action.type === CLOSE_CALCULATOR) {
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{calculator:{isOpen:false,foodObject:{}}})
+        });
+    }
+    
     return state;
 };
 

@@ -1,27 +1,26 @@
 import React from 'react';
 import './shopingCalculator.css';
-import hamburguesaImage from '../../test-images/hamburguesa.png';
+import CloseButton from './closeButton/CloseButton';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-/*
 const mapStateToProps = state => {
-    return {calculator:state.salesWindowState.calculator}
+    return { calculator: state.salesWindowState.calculator }
 };
-*/
 
-const ShopingCalculator = function (props) {
-    let isOpen = "visible";
-    if(props.calculatorProperties.isOpen){
-        isOpen = "hidden";
+const ShopingCalculatorConnected = function ({ calculator }) {
+    let isOpen = "hidden";
+    if (calculator.isOpen) {
+        isOpen = "visible";
     }
     return (
-        <div className="shopingCalculator-container" style={{visibility:isOpen}}>
+        <div className="shopingCalculator-container" style={{ visibility: isOpen }}>
             <div className="shopingCalculator-imgContainer">
-                <img className="shopingCalculator-image" src={hamburguesaImage} />
+                <img className="shopingCalculator-image" alt="img" src={calculator.foodObject.image} />
+                <CloseButton />
             </div>
             <div className="shopingCalculator-calculatorButtonsContainer">
-                <input type="text" placeholder="cantidad..."/>
+                <input type="text" placeholder="cantidad..." />
                 <div className="shopingCalculator-buttonRow">
                     <button>1</button>
                     <button>2</button>
@@ -45,6 +44,6 @@ const ShopingCalculator = function (props) {
     );
 };
 
-//const ShopingCalculator = connect(mapStateToProps)(ShopingCalculatorConnected);
+const ShopingCalculator = connect(mapStateToProps)(ShopingCalculatorConnected);
 
 export default ShopingCalculator;

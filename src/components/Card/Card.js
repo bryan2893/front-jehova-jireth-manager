@@ -1,22 +1,38 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Card.css';
 
 import { connect } from 'react-redux';
+import {setProductToCalculator} from '../../redux/actions';
 
-const mapDispatchToProps = () => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        addArticle: article => dispatch(addArticle(article))
+        setProductToCalculator: food => dispatch(setProductToCalculator(food))
     };
 };
 
-const Card = function (props) {
+class CardConnected extends Component{
+    constructor(props){
+        super(props);
+        this.handleCardClick = this.handleCardClick.bind(this);
+    }
 
-    return (
-        <div className="Card-div">
-            <img className="Card-img" src={props.food.image} />
-            <p className="Card-p">{props.food.name}</p>
-        </div>
-    );
-};
+    handleCardClick(event){
+        let foodObject = {};
+        foodObject.name = this.props.food.name;
+        foodObject.image = this.props.food.image;
+        this.props.setProductToCalculator(foodObject);
+    }
+
+    render(){
+        return (
+            <div className="Card-div" onClick={this.handleCardClick}>
+                <img className="Card-img" alt="img" src={this.props.food.image} />
+                <p className="Card-p">{this.props.food.name}</p>
+            </div>
+        );
+    }
+}
+
+const Card = connect(null,mapDispatchToProps)(CardConnected);
 
 export default Card;

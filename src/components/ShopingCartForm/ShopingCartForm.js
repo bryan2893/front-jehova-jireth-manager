@@ -23,13 +23,13 @@ export default class ShopingCartForm extends Component{
                 <input type="text" placeholder="cliente..." value={this.state.value} onChange={this.handleChange} />
                 <textarea value={this.state.textAreaValue} placeholder="Detalles..." onChange={this.handleTextAreaOnChange}/>
 
-                <label class="container">Para llevar
+                <label className="container">Para llevar
                     <input type="checkbox"/>
-                    <span class="checkmark" />
+                    <span className="checkmark" />
                 </label>
-                <label class="container">Pendiente
+                <label className="container">Pendiente
                     <input type="checkbox" />
-                    <span class="checkmark" />
+                    <span className="checkmark" />
                 </label>
 
                 <input type="submit" value="Registrar" />
