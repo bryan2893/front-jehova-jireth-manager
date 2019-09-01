@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import './shopingCalculator.css';
-import CloseButton from './closeButton/CloseButton';
 
 import { connect } from 'react-redux';
+import {closeCalculator} from '../../redux/actions';
+import exImg from '../../test-images/ex.png';
 
 const mapStateToProps = state => {
     return { calculator: state.salesWindowState.calculator }
 };
+
+function mapDispatchToProps(dispatch) {
+    return {
+        closeCalculator: something => dispatch(closeCalculator(something))
+    };
+}
 
 
 class ShopingCalculatorConnected extends Component {
@@ -15,6 +22,12 @@ class ShopingCalculatorConnected extends Component {
         this.state = { txtQuantity: '' };
         this.handleNumberButton = this.handleNumberButton.bind(this);
         this.handleOnChangeTxtQuantity = this.handleOnChangeTxtQuantity.bind(this);
+        this.handleCloseButton = this.handleCloseButton.bind(this);
+    }
+
+    handleCloseButton(){
+        this.setState({txtQuantity:''});
+        this.props.closeCalculator(null);
     }
 
     handleOnChangeTxtQuantity(event) {
@@ -47,15 +60,15 @@ class ShopingCalculatorConnected extends Component {
     }
 
     render() {
-        let isOpen = "hidden";
+        let isOpen = "none";
         if (this.props.calculator.isOpen) {
-            isOpen = "visible";
+            isOpen = "initial";
         }
         return (
-            <div className="shopingCalculator-container" style={{ visibility: isOpen }}>
+            <div className="shopingCalculator-container" style={{ display: isOpen }}>
                 <div className="shopingCalculator-imgContainer">
                     <img className="shopingCalculator-image" alt="img" src={this.props.calculator.foodObject.image} />
-                    <CloseButton />
+                    <img className="shopingCalculator-exCloser" alt="img" src={exImg} onClick={this.handleCloseButton} />
                 </div>
                 <div className="shopingCalculator-calculatorButtonsContainer">
                     <input type="text" placeholder="cantidad..." value={this.state.txtQuantity} onChange={this.handleOnChangeTxtQuantity} />
@@ -83,6 +96,6 @@ class ShopingCalculatorConnected extends Component {
     }
 }
 
-const ShopingCalculator = connect(mapStateToProps)(ShopingCalculatorConnected);
+const ShopingCalculator = connect(mapStateToProps,mapDispatchToProps)(ShopingCalculatorConnected);
 
 export default ShopingCalculator;
