@@ -1,4 +1,6 @@
 .shopingCartList-container{
     width: 100%;
     background-color: rebeccapurple;
+    padding: 1px;
+    box-sizing: border-box;
 }

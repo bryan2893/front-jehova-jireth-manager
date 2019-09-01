@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST } from '../constants/action-types';
+import { SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -6,23 +6,17 @@ import {getFoods} from '../../service/food';
 const initialState = {
     salesWindowState:{
         filter:"",
+        allFoods:[],
         actualFoodList:getFoods(),
         calculator:{
             isOpen:false,
             foodObject:{},
         },
         shopingCartList:[]
-    },
-    articles: []
+    }
 };
 
 function rootReducer(state = initialState, action) {
-
-    if (action.type === ADD_ARTICLE) {
-        return Object.assign({}, state, {
-            articles: state.articles.concat(action.payload)
-        });
-    }
 
     if (action.type === SET_PRODUCT_TO_CALCULATOR) {
         return Object.assign({}, state, {

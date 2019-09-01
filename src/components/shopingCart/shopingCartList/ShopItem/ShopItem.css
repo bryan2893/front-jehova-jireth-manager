@@ -1,4 +1,30 @@
 .ShopItem-container{
     color: white;
-    margin: 1px;
+    margin: 1px 0px 1px 0px;
+    height: 40px;
+    background-color: brown;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .8em;
+    position: relative;
+}
+
+.shopItem-img{
+    width: 38px;
+    height: 38px;
+}
+
+.shopItem-floatShower{
+    position: absolute;
+    background-color: green;
+    width: 24px;
+    height: 24px;
+    top: 0px;
+    right: -25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
 }
