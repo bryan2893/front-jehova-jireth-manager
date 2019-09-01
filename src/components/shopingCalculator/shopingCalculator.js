@@ -5,16 +5,11 @@ import { connect } from 'react-redux';
 import {closeCalculator} from '../../redux/actions';
 import exImg from '../../test-images/ex.png';
 
-const mapStateToProps = state => {
-    return { calculator: state.salesWindowState.calculator }
-};
-
 function mapDispatchToProps(dispatch) {
     return {
         closeCalculator: something => dispatch(closeCalculator(something))
     };
 }
-
 
 class ShopingCalculatorConnected extends Component {
     constructor(props) {
@@ -23,6 +18,11 @@ class ShopingCalculatorConnected extends Component {
         this.handleNumberButton = this.handleNumberButton.bind(this);
         this.handleOnChangeTxtQuantity = this.handleOnChangeTxtQuantity.bind(this);
         this.handleCloseButton = this.handleCloseButton.bind(this);
+        this.handleAddFoodButton = this.handleAddFoodButton.bind(this);
+    }
+
+    handleAddFoodButton(event){
+        this.setState({txtQuantity:''});
     }
 
     handleCloseButton(){
@@ -61,13 +61,13 @@ class ShopingCalculatorConnected extends Component {
 
     render() {
         let isOpen = "none";
-        if (this.props.calculator.isOpen) {
+        if (this.props.calculatorProperties.isOpen) {
             isOpen = "initial";
         }
         return (
             <div className="shopingCalculator-container" style={{ display: isOpen }}>
                 <div className="shopingCalculator-imgContainer">
-                    <img className="shopingCalculator-image" alt="img" src={this.props.calculator.foodObject.image} />
+                    <img className="shopingCalculator-image" alt="img" src={this.props.calculatorProperties.foodObject.image} />
                     <img className="shopingCalculator-exCloser" alt="img" src={exImg} onClick={this.handleCloseButton} />
                 </div>
                 <div className="shopingCalculator-calculatorButtonsContainer">
@@ -89,6 +89,7 @@ class ShopingCalculatorConnected extends Component {
                     </div>
                     <div className="shopingCalculator-buttonRow">
                         <button value="0" onClick={this.handleNumberButton}>0</button>
+                        <button className="shopingCalculator-acceptButton" onClick={this.handleAddFoodButton}>Agregar</button>
                     </div>
                 </div>
             </div>
@@ -96,6 +97,6 @@ class ShopingCalculatorConnected extends Component {
     }
 }
 
-const ShopingCalculator = connect(mapStateToProps,mapDispatchToProps)(ShopingCalculatorConnected);
+const ShopingCalculator = connect(null,mapDispatchToProps)(ShopingCalculatorConnected);
 
 export default ShopingCalculator;

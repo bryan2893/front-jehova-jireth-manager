@@ -51,6 +51,14 @@ input[type="text"]{
     height: 50px;
 }
 
+.shopingCalculator-acceptButton{
+    font-size: .8em !important;
+    padding: 0;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+
 .shopingCalculator-exCloser{
     cursor: pointer;
     top:1px;
