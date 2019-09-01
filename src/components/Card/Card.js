@@ -17,10 +17,7 @@ class CardConnected extends Component{
     }
 
     handleCardClick(event){
-        let foodObject = {};
-        foodObject.name = this.props.food.name;
-        foodObject.image = this.props.food.image;
-        this.props.setProductToCalculator(foodObject);
+        this.props.setProductToCalculator(this.props.food);
     }
 
     render(){

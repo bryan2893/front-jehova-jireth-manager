@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './shopingCalculator.css';
 
 import { connect } from 'react-redux';
-import {closeCalculator} from '../../redux/actions';
+import { closeCalculator } from '../../redux/actions';
+import { addFoodToCartList } from '../../redux/actions';
 import exImg from '../../test-images/ex.png';
 
 function mapDispatchToProps(dispatch) {
     return {
-        closeCalculator: something => dispatch(closeCalculator(something))
+        closeCalculator: something => dispatch(closeCalculator(something)),
+        addFoodToCartList: food => dispatch(addFoodToCartList(food))
     };
 }
 
@@ -21,12 +23,16 @@ class ShopingCalculatorConnected extends Component {
         this.handleAddFoodButton = this.handleAddFoodButton.bind(this);
     }
 
-    handleAddFoodButton(event){
-        this.setState({txtQuantity:''});
+    handleAddFoodButton(event) {
+        if (this.state.txtQuantity !== '') {
+            let foodObject = Object.assign({},this.props.calculatorProperties.foodObject,{quantity:parseInt(this.state.txtQuantity)});
+            this.props.addFoodToCartList(foodObject);
+            this.setState({ txtQuantity: '' });
+        }
     }
 
-    handleCloseButton(){
-        this.setState({txtQuantity:''});
+    handleCloseButton() {
+        this.setState({ txtQuantity: '' });
         this.props.closeCalculator(null);
     }
 
@@ -97,6 +103,6 @@ class ShopingCalculatorConnected extends Component {
     }
 }
 
-const ShopingCalculator = connect(null,mapDispatchToProps)(ShopingCalculatorConnected);
+const ShopingCalculator = connect(null, mapDispatchToProps)(ShopingCalculatorConnected);
 
 export default ShopingCalculator;

@@ -1,4 +1,4 @@
-import { ADD_ARTICLE, SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR } from '../constants/action-types';
+import { ADD_ARTICLE, SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -10,7 +10,8 @@ const initialState = {
         calculator:{
             isOpen:false,
             foodObject:{},
-        }
+        },
+        shopingCartList:[]
     },
     articles: []
 };
@@ -32,6 +33,12 @@ function rootReducer(state = initialState, action) {
     if (action.type === CLOSE_CALCULATOR) {
         return Object.assign({}, state, {
             salesWindowState: Object.assign({},state.salesWindowState,{calculator:{isOpen:false,foodObject:{}}})
+        });
+    }
+
+    if (action.type === ADD_FOOD_TO_CARTLIST) {
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:state.salesWindowState.shopingCartList.concat(action.payload)})
         });
     }
     
