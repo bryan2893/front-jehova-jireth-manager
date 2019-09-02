@@ -27,8 +27,8 @@ let getFoods = () => {
                         {id:22,name:"Hamburguesa con papas",image:hamburguesa,price:1700},
                         {id:23,name:"Hamburguesa con papas",image:hamburguesa,price:1700},
                         {id:24,name:"Hamburguesa con papas",image:hamburguesa,price:1700}];
-                        
         return foodList;
+        
 };
 
 export {getFoods}
