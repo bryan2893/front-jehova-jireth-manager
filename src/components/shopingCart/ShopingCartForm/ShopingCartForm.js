@@ -14,7 +14,8 @@ export default class ShopingCartForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        
+        store.dispatch(cleanSalesWindow(null));
+
         /*
         login('11560083','casanueva4321').then((result)=>{
             console.log(result);

@@ -1,4 +1,7 @@
-import { SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,DELETE_FOOD_FROM_CARTLIST,UPDATE_TOTAL_COUNTER } from '../constants/action-types';
+import { SET_PRODUCT_TO_CALCULATOR,
+    CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
+    DELETE_FOOD_FROM_CARTLIST,
+    UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -74,6 +77,12 @@ function rootReducer(state = initialState, action) {
         }
         return Object.assign({}, state, {
             salesWindowState: Object.assign({},state.salesWindowState,{totalPurchase:totalAmount})
+        });
+    }
+
+    if(action.type === CLEAN_SALES_WINDOW){
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{filter:"",allFoods:[],shopingCartList:[],totalPurchase:0,calculator:{isOpen:false,foodObject:{}}})
         });
     }
         
