@@ -14,11 +14,14 @@ export default class ShopingCartForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
+        
+        /*
         login('11560083','casanueva4321').then((result)=>{
             console.log(result);
         }).catch((error) => {
             alert(error);
         });
+        */
     }
 
     handleChange(event){
