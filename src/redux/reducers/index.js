@@ -12,7 +12,8 @@ const initialState = {
             isOpen:false,
             foodObject:{},
         },
-        shopingCartList:[]
+        shopingCartList:[],
+        totalPurchase:0
     }
 };
 
