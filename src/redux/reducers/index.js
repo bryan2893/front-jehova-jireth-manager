@@ -1,4 +1,4 @@
-import { SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,DELETE_FOOD_FROM_CARTLIST } from '../constants/action-types';
+import { SET_PRODUCT_TO_CALCULATOR,CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,DELETE_FOOD_FROM_CARTLIST,UPDATE_TOTAL_COUNTER } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -62,6 +62,18 @@ function rootReducer(state = initialState, action) {
     if (action.type === DELETE_FOOD_FROM_CARTLIST) {
         return Object.assign({}, state, {
             salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:state.salesWindowState.shopingCartList.filter(food => food.id !== action.payload)})
+        });
+    }
+
+    if(action.type === UPDATE_TOTAL_COUNTER){
+        let totalAmount = 0;
+        let ShopingList = state.salesWindowState.shopingCartList;
+        for(let i = 0; i < ShopingList.length; i++){
+            let foodItem = ShopingList[i];
+            totalAmount += foodItem.price * foodItem.quantity;
+        }
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{totalPurchase:totalAmount})
         });
     }
         

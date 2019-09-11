@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import './shopingCalculator.css';
 
 import { connect } from 'react-redux';
-import { closeCalculator } from '../../redux/actions';
-import { addFoodToCartList } from '../../redux/actions';
+import { closeCalculator,addFoodToCartList,updateTotalCounter } from '../../redux/actions';
 import exImg from '../../test-images/ex.png';
 
 function mapDispatchToProps(dispatch) {
     return {
         closeCalculator: something => dispatch(closeCalculator(something)),
-        addFoodToCartList: food => dispatch(addFoodToCartList(food))
+        addFoodToCartList: food => dispatch(addFoodToCartList(food)),
+        updateTotalCounter: something => dispatch(updateTotalCounter(something))
     };
 }
 
@@ -28,6 +28,8 @@ class ShopingCalculatorConnected extends Component {
             let foodObject = Object.assign({},this.props.calculatorProperties.foodObject,{quantity:parseInt(this.state.txtQuantity)});
             this.props.addFoodToCartList(foodObject);
             this.setState({ txtQuantity: '' });
+            this.props.closeCalculator(null);
+            this.props.updateTotalCounter(null);
         }
     }
 
