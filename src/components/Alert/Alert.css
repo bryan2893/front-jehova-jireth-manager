@@ -1,0 +1,27 @@
+.Alert-container{
+    position: fixed;
+    top: 9vh;
+    background-color: #2e7d32;
+    opacity: .0;
+    width: 500px;
+    height: 50px;
+    padding: 3px;
+    color: white;
+    z-index: 50;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: double;
+    border-color: #005005;
+    border-width: 1px;
+    transition: opacity 1s ease;
+}
+
+.Alert-important{
+    font-weight: bold;
+}
+
+.Alert-message{
+    color: white;
+}

@@ -1,12 +1,15 @@
 import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
     DELETE_FOOD_FROM_CARTLIST,
-    UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW } from '../constants/action-types';
+    UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
+    OPEN_ALERT } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
 
 const initialState = {
+    alert:{visibility:'0',reason:"",message:""},
+
     salesWindowState:{
         filter:"",
         allFoods:[],
@@ -18,6 +21,7 @@ const initialState = {
         shopingCartList:[],
         totalPurchase:0
     }
+
 };
 
 function rootReducer(state = initialState, action) {
@@ -83,6 +87,18 @@ function rootReducer(state = initialState, action) {
     if(action.type === CLEAN_SALES_WINDOW){
         return Object.assign({}, state, {
             salesWindowState: Object.assign({},state.salesWindowState,{filter:"",allFoods:[],shopingCartList:[],totalPurchase:0,calculator:{isOpen:false,foodObject:{}}})
+        });
+    }
+
+    if(action.type === CLOSE_ALERT){
+        return Object.assign({}, state, {
+            alert: Object.assign({},state.alert,{visibility:'0'})
+        });
+    }
+
+    if(action.type === OPEN_ALERT){
+        return Object.assign({}, state, {
+            alert: {visibility:action.payload.visibility,reason:action.payload.reason,message:action.payload.message}
         });
     }
         
