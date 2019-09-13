@@ -13,3 +13,5 @@ export const CLEAN_SALES_WINDOW = "CLEAN_SALES_WINDOW";
 export const CLOSE_ALERT = "CLOSE_ALERT";
 
 export const OPEN_ALERT = "OPEN_ALERT";
+
+export const HIDE_ALERT = "HIDE_ALERT";

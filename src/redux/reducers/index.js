@@ -2,13 +2,13 @@ import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
     DELETE_FOOD_FROM_CARTLIST,
     UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
-    OPEN_ALERT } from '../constants/action-types';
+    OPEN_ALERT,HIDE_ALERT } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
 
 const initialState = {
-    alert:{visibility:'0',reason:"",message:""},
+    alert:{visibility:'0',reason:"",message:"",type:""},
 
     salesWindowState:{
         filter:"",
@@ -98,7 +98,13 @@ function rootReducer(state = initialState, action) {
 
     if(action.type === OPEN_ALERT){
         return Object.assign({}, state, {
-            alert: {visibility:action.payload.visibility,reason:action.payload.reason,message:action.payload.message}
+            alert: {visibility:action.payload.visibility,reason:action.payload.reason,message:action.payload.message,type:action.payload.type}
+        });
+    }
+
+    if(action.type === HIDE_ALERT){
+        return Object.assign({}, state, {
+            alert: Object.assign({},state.alert,{type:"hidden"})
         });
     }
         

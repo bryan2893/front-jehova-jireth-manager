@@ -13,7 +13,7 @@ export default class ShopingCartForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        alert('.9','Exito!','Pedido registrado con éxito!');
+        alert('.9','Exito!','Pedido registrado con éxito!','succes');
 
         /*
         login('11560083','casanueva4321').then((result)=>{
