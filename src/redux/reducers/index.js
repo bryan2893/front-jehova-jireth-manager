@@ -1,8 +1,7 @@
 import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
-    DELETE_FOOD_FROM_CARTLIST,
     UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
-    OPEN_ALERT,HIDE_ALERT } from '../constants/action-types';
+    OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -64,10 +63,22 @@ function rootReducer(state = initialState, action) {
         }
     }
 
-    if (action.type === DELETE_FOOD_FROM_CARTLIST) {
+    if (action.type === SUBSTRACT_FOOD_TO_CARTLIST) {
+        let foodByPayload = action.payload;
+
+        let copyOfFoods = [...state.salesWindowState.shopingCartList];
+
+        let updatedArray = copyOfFoods.map(function(food){
+            if (food.id === foodByPayload.id){
+                return Object.assign({},food,{quantity:food.quantity - 1});
+            }
+            return Object.assign({},food);
+        })
+
         return Object.assign({}, state, {
-            salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:state.salesWindowState.shopingCartList.filter(food => food.id !== action.payload)})
+            salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:updatedArray.filter(food => food.quantity > 0)})
         });
+
     }
 
     if(action.type === UPDATE_TOTAL_COUNTER){
