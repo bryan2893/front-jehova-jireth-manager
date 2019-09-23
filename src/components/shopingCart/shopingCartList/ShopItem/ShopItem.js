@@ -3,12 +3,12 @@ import './ShopItem.css';
 import deleteIcon from '../../../../test-images/delete.png';
 
 import { connect } from 'react-redux';
-import { deleteFoodFromCartList } from '../../../../redux/actions';
+import { substractFoodToCartList } from '../../../../redux/actions';
 import { updateTotalCounter } from '../../../../redux/actions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        deleteFoodFromCartList: foodId => dispatch(deleteFoodFromCartList(foodId)),
+        substractFoodToCartList: food => dispatch(substractFoodToCartList(food)),
         updateTotalCounter: something => dispatch(updateTotalCounter(something))
     };
 };
@@ -21,7 +21,7 @@ class ShopItemConnected extends Component {
     }
 
     handleDeleteButton(event){
-        this.props.deleteFoodFromCartList(this.props.food.id);
+        this.props.substractFoodToCartList(this.props.food);
         this.props.updateTotalCounter(null);//se dispara la accion para actualizar el contador.
     }
 
