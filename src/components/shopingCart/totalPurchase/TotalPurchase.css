@@ -2,7 +2,6 @@
     position: absolute;
     display: flex;
     justify-content: center;
-    background-color: yellowgreen;
     width: 100%;
     height: 50px;
     bottom: 1px;
@@ -12,7 +11,7 @@
 .TotalPurchase-counter{
     width: 70%;
     height: 100%;
-    background-color: green;
+    background-color: #33691e;
     color: white;
     display: flex;
     justify-content: center;

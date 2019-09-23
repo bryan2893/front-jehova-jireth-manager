@@ -21,7 +21,6 @@ const initialState = {
         shopingCartList:[],
         totalPurchase:0
     }
-
 };
 
 function rootReducer(state = initialState, action) {

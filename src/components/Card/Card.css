@@ -2,6 +2,7 @@
     width: 45px;
     height: 45px;
     position: relative;
+    border-radius: 50%;
 }
 
 .Card-div{
@@ -11,10 +12,11 @@
     width: 70px;
     height: 70px;
     border-style: solid;
-    border-color: black;
+    border-color: #689f38;
     text-align: center;
     margin: 2px;
     cursor: pointer;
+    border-radius: 25%;
 }
 
 .Card-p{
