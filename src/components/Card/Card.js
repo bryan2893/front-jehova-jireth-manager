@@ -2,11 +2,12 @@ import React, {Component} from 'react';
 import './Card.css';
 
 import { connect } from 'react-redux';
-import {setProductToCalculator} from '../../redux/actions';
+import {addFoodToCartList,updateTotalCounter} from '../../redux/actions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setProductToCalculator: food => dispatch(setProductToCalculator(food))
+        addFoodToCartList: food => dispatch(addFoodToCartList(food)),
+        updateTotalCounter: something => dispatch(updateTotalCounter(something))
     };
 };
 
@@ -17,7 +18,10 @@ class CardConnected extends Component{
     }
 
     handleCardClick(event){
-        this.props.setProductToCalculator(this.props.food);
+        let foodObject = Object.assign({},this.props.food,{quantity:1});
+
+        this.props.addFoodToCartList(foodObject);
+        this.props.updateTotalCounter(null);
     }
 
     render(){

@@ -61,7 +61,6 @@ function rootReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:fixedArray})
             });
-            
         }
     }
 
