@@ -1,0 +1,33 @@
+.Filter-container{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    margin-bottom: 10px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.Filter-item{
+    color: white;
+    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    margin: 0px 5px 0px 0px;
+    box-sizing: border-box;
+    padding: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: transparent;
+    background: transparent;
+    outline: none;
+}
+
+.Filter-higLighted{
+    border-color: #689f38;
+    background-color: green;
+}
+
+.Filter-item:hover{
+    cursor: pointer;
+    background-color: green;
+}
