@@ -15,3 +15,5 @@ export const CLOSE_ALERT = "CLOSE_ALERT";
 export const OPEN_ALERT = "OPEN_ALERT";
 
 export const HIDE_ALERT = "HIDE_ALERT";
+
+export const SET_ACTUAL_FOOD_LIST = "SET_ACTUAL_FOOD_LIST";
