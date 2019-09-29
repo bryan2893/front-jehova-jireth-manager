@@ -1,7 +1,7 @@
 import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
     UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
-    OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST } from '../constants/action-types';
+    OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
@@ -116,7 +116,13 @@ function rootReducer(state = initialState, action) {
             alert: Object.assign({},state.alert,{type:"hidden"})
         });
     }
-        
+
+    if(action.type === SET_ACTUAL_FOOD_LIST){
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{actualFoodList:action.payload})
+        });
+    }
+
     return state;
 };
 
