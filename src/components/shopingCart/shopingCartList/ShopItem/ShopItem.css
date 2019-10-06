@@ -2,7 +2,7 @@
     color: white;
     margin: 1px 0px 1px 0px;
     height: 40px;
-    background-color: brown;
+    background-color: #33691e;
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
@@ -17,14 +17,16 @@
 }
 
 .shopItem-floatShower{
-    position: absolute;
     background-color: green;
     width: 24px;
     height: 24px;
-    top: 0px;
-    right: -25px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+
+.algo{
+    display: flex;
+    justify-content: space-between;
 }

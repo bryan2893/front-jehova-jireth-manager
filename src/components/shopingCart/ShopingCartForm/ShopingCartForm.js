@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
 import './ShopingCartForm.css';
 
-//PRUEBA
-import {login} from '../../../service/auth';
+import alert from '../../../service/alert-service';
 
 export default class ShopingCartForm extends Component{
     constructor(props){
@@ -14,6 +13,7 @@ export default class ShopingCartForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
+        alert('.9','Exito!','Pedido registrado con éxito!','succes');
 
         /*
         login('11560083','casanueva4321').then((result)=>{

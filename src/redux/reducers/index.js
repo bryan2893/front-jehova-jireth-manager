@@ -1,12 +1,14 @@
 import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
-    DELETE_FOOD_FROM_CARTLIST,
-    UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW } from '../constants/action-types';
+    UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
+    OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST } from '../constants/action-types';
 
 //PRUEBA
 import {getFoods} from '../../service/food';
 
 const initialState = {
+    alert:{visibility:'0',reason:"",message:"",type:""},
+
     salesWindowState:{
         filter:"",
         allFoods:[],
@@ -58,14 +60,25 @@ function rootReducer(state = initialState, action) {
             return Object.assign({}, state, {
                 salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:fixedArray})
             });
-            
         }
     }
 
-    if (action.type === DELETE_FOOD_FROM_CARTLIST) {
+    if (action.type === SUBSTRACT_FOOD_TO_CARTLIST) {
+        let foodByPayload = action.payload;
+
+        let copyOfFoods = [...state.salesWindowState.shopingCartList];
+
+        let updatedArray = copyOfFoods.map(function(food){
+            if (food.id === foodByPayload.id){
+                return Object.assign({},food,{quantity:food.quantity - 1});
+            }
+            return Object.assign({},food);
+        })
+
         return Object.assign({}, state, {
-            salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:state.salesWindowState.shopingCartList.filter(food => food.id !== action.payload)})
+            salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:updatedArray.filter(food => food.quantity > 0)})
         });
+
     }
 
     if(action.type === UPDATE_TOTAL_COUNTER){
@@ -85,7 +98,31 @@ function rootReducer(state = initialState, action) {
             salesWindowState: Object.assign({},state.salesWindowState,{filter:"",allFoods:[],shopingCartList:[],totalPurchase:0,calculator:{isOpen:false,foodObject:{}}})
         });
     }
-        
+
+    if(action.type === CLOSE_ALERT){
+        return Object.assign({}, state, {
+            alert: Object.assign({},state.alert,{visibility:'0'})
+        });
+    }
+
+    if(action.type === OPEN_ALERT){
+        return Object.assign({}, state, {
+            alert: {visibility:action.payload.visibility,reason:action.payload.reason,message:action.payload.message,type:action.payload.type}
+        });
+    }
+
+    if(action.type === HIDE_ALERT){
+        return Object.assign({}, state, {
+            alert: Object.assign({},state.alert,{type:"hidden"})
+        });
+    }
+
+    if(action.type === SET_ACTUAL_FOOD_LIST){
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{actualFoodList:action.payload})
+        });
+    }
+
     return state;
 };
 
