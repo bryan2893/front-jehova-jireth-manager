@@ -29,10 +29,12 @@ class ShopItemConnected extends Component {
         return (
             <div className="ShopItem-container">
                 <span>{this.props.food.name}</span>
-                <span onClick={this.handleDeleteButton}>
-                    <img className="shopItem-img" alt="img" src={deleteIcon} />
+                <span className="algo">
+                    <span onClick={this.handleDeleteButton}>
+                        <img className="shopItem-img" alt="img" src={deleteIcon} />
+                    </span>
+                    <span className="shopItem-floatShower">{this.props.food.quantity}</span>
                 </span>
-                <span className="shopItem-floatShower">{this.props.food.quantity}</span>
             </div>
         );
     }
