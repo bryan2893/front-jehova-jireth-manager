@@ -17,14 +17,16 @@
 }
 
 .shopItem-floatShower{
-    position: absolute;
     background-color: green;
     width: 24px;
     height: 24px;
-    top: 0px;
-    right: -25px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+
+.algo{
+    display: flex;
+    justify-content: space-between;
 }
