@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import './ShopingCartForm.css';
 
+import TotalPurchase from '../totalPurchase/TotalPurchase';
+
 import alert from '../../../service/alert-service';
 
 export default class ShopingCartForm extends Component{
@@ -47,6 +49,8 @@ export default class ShopingCartForm extends Component{
                     <input type="checkbox" />
                     <span className="checkmark" />
                 </label>
+
+                <TotalPurchase total={this.props.total}/>
 
                 <input type="submit" value="Registrar" />
                 

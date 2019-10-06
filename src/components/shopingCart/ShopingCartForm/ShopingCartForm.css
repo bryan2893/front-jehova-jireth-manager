@@ -15,6 +15,15 @@
     border: none;
     margin-bottom: 4px;
     border-radius: 10px;
+    height: 40px;
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    background-color: green;
+}
+
+.ShopingCartForm-form input[type=submit]:hover{
+  cursor: pointer;
 }
 
 .ShopingCartForm-form textarea{

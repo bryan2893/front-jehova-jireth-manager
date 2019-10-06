@@ -3,14 +3,12 @@ import './ShopingCart.css';
 
 import ShopingCartForm from './ShopingCartForm/ShopingCartForm';
 import ShopingCartList from './shopingCartList/shopingCartList';
-import TotalPurchase from './totalPurchase/TotalPurchase';
 
 const ShopingCart = function(props) {
     return (
         <div className="ShopingCart-container">
-            <ShopingCartForm />
+            <ShopingCartForm total={props.total}/>
             <ShopingCartList shopItems={props.shopItems}/>
-            <TotalPurchase total={props.total}/>
         </div>
     );
 }
