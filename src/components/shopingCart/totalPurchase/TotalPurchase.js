@@ -5,7 +5,7 @@ const TotalPurchase = function(props) {
     return (
         <div className="TotalPurchase-container">
             <span className="TotalPurchase-counter">
-                ₡ {props.total}
+                Total: ₡ {props.total}
             </span>
         </div>
     );
