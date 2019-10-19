@@ -1,124 +1,19 @@
-.Card-img{
-    width: 45px;
-    height: 45px;
-    position: relative;
-    border-radius: 50%;
-}
-
 .Card-div{
-    display: inline-block;
     padding: 0;
-    position: relative;
-    width: 70px;
-    height: 70px;
+    width: 130px;
+    height: 100px;
     border-style: solid;
     border-color: #689f38;
     text-align: center;
     margin: 2px;
     cursor: pointer;
-    border-radius: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
 }
 
 .Card-p{
-    position: absolute;
     margin: 0;
-    background-color: black;
     color: white;
-    border-radius: 0px 0px 10px 10px;
-    visibility: hidden;
-}
-
-.Card-div:hover .Card-p{
-    visibility: visible;
-    top:0%;
-    left: 100%;
-    z-index: 1;
-    animation: fadeIn .5s;
-}
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-}
-  
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-}
-
-/* 
-  ##Device = Desktops
-  ##Screen = 1281px to higher resolution desktops
-*/
-@media (min-width: 1281px) {
-    .Card-img{
-        width: 60px;
-        height: 60px;
-    }
-
-    .Card-div{
-        width: 100px;
-        height: 100px;
-    }
-}
-
-/* 
-  ##Device = Laptops, Desktops
-  ##Screen = B/w 1025px to 1280px
-*/
-@media (min-width: 1025px) and (max-width: 1280px) {
-    .Card-img{
-        width: 45px;
-        height: 45px;
-    }
-
-    .Card-div{
-        width: 70px;
-        height: 70px;
-    }
-
-    .Card-p{
-        font-size: .8em;
-    }
-}
-
-/* 
-  ##Device = Tablets, Ipads (portrait)
-  ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 700px) and (max-width: 1024px) {
-    .Card-img{
-        width: 40px;
-        height: 40px;
-    }
-
-    .Card-div{
-        width: 65px;
-        height: 65px;
-    }
-
-    .Card-p{
-        font-size: .8em;
-    }
-}
-
-@media (min-width: 500px) and (max-width: 699px) {
-    .Card-img{
-        width: 35px;
-        height: 35px;
-    }
-
-    .Card-div{
-        width: 60px;
-        height: 60px;
-    }
-
-    .Card-p{
-        font-size: .8em;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-
 }

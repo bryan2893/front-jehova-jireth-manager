@@ -27,7 +27,6 @@ class CardConnected extends Component{
     render(){
         return (
             <div className="Card-div" onClick={this.handleCardClick}>
-                <img className="Card-img" alt="img" src={this.props.food.image} />
                 <p className="Card-p">{this.props.food.name}</p>
             </div>
         );
