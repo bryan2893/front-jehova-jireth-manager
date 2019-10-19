@@ -1,9 +1,9 @@
 import React from 'react';
 import './SalesWindow.css';
 
-import Viewer from '../meal-viewer/Viewer';
-import ShopingCart from '../shopingCart/ShopingCart';
-import ShopingCalculator from '../shopingCalculator/shopingCalculator';
+import Viewer from './meal-viewer/Viewer';
+import ShopingCart from './shopingCart/ShopingCart';
+import ShopingCalculator from './shopingCalculator/shopingCalculator';
 
 import {connect} from 'react-redux';
 

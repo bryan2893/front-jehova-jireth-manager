@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './Card.css';
 
 import { connect } from 'react-redux';
-import {addFoodToCartList,updateTotalCounter} from '../../redux/actions';
+import {addFoodToCartList,updateTotalCounter} from '../../../../redux/actions';
 
 const mapDispatchToProps = (dispatch) => {
     return {

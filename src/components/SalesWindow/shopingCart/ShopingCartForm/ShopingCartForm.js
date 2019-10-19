@@ -3,7 +3,7 @@ import './ShopingCartForm.css';
 
 import TotalPurchase from '../totalPurchase/TotalPurchase';
 
-import alert from '../../../service/alert-service';
+import alert from '../../../../service/alert-service';
 
 export default class ShopingCartForm extends Component{
     constructor(props){
