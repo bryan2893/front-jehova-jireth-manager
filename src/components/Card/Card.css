@@ -1,14 +1,16 @@
 .Card-div{
     padding: 0;
     width: 130px;
-    height: 130px;
+    height: 100px;
     border-style: solid;
     border-color: #689f38;
     text-align: center;
     margin: 2px;
     cursor: pointer;
     display: flex;
+    justify-content: center;
     align-items: center;
+    border-radius: 5px;
 }
 
 .Card-p{
