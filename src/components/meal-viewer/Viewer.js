@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card/Card';
+import Card from './Card/Card';
 import Filter from './filter/filter';
 import './Viewer.css';
 
