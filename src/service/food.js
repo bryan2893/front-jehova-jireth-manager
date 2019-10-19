@@ -24,7 +24,15 @@ let foodList = [{id:1,name:"Hamburguesa con papas",image:hamburguesa,price:1700,
         {id:21,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
         {id:22,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
         {id:23,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
-        {id:24,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1}];
+        {id:24,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:25,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:26,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:27,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:28,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:29,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:30,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:31,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
+        {id:32,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1}];
 
 let getFoods = () => {
         return foodList;

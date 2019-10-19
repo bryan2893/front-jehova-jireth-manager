@@ -6,8 +6,14 @@ import './Viewer.css';
 const Viewer = function(props){
     return (
         <div className="Viewer-container">
-            <Filter filters = {[{id:1,nombre:'comidas'},{id:2,nombre:'refrescos'},{id:3,nombre:'postres'}]}></Filter>
-            {props.foodList.map( (fod) => <Card key={fod.id} food={fod}/> )}
+                <div className="Viewer-filterContainer">
+                    <p>algo</p>
+                    <p>algo2</p>
+                </div>
+
+                <div className="Viewer-productsContainer">
+                    {props.foodList.map( (fod) => <Card key={fod.id} food={fod}/> )}
+                </div>
         </div>
     );
 };
