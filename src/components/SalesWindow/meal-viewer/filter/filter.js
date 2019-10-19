@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './filter.css';
-import store from '../../../redux/store/index';
-import {setActualFoodList} from '../../../redux/actions';
+import store from '../../../../redux/store/index';
+import {setActualFoodList} from '../../../../redux/actions';
 
-import {getFoodsByCategory} from '../../../service/food';
+import {getFoodsByCategory} from '../../../../service/food';
 
 export default class Filter extends Component {
     constructor(props) {
