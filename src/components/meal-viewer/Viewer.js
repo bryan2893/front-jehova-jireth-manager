@@ -7,8 +7,10 @@ const Viewer = function(props){
     return (
         <div className="Viewer-container">
             <div className="Viewer-filterContainer">
-                <p>algo</p>
-                <p>algo2</p>
+                <button>Comidas</button>
+                <button>Refrescos</button>
+                <button>Golosinas</button>
+                <button>Postres</button>
             </div>
             <div className="Viewer-subContainer">
                 <div className="Viewer-productsContainer">
