@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './Card/Card';
-import Filter from './filter/filter';
 import './Viewer.css';
 
 const Viewer = function(props){
