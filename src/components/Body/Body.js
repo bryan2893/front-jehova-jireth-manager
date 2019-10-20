@@ -10,11 +10,18 @@ const Home = function(props){
     );
 }
 
+const FacturasWindow = function(props){
+    return (
+        <h1>FACTURAS</h1>
+    );
+}
+
 const Body = () => (
         <div className="Body-container">
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route path="/sales" component={SalesWindow} />
+                <Route path="/facturas" component={FacturasWindow} />
             </Switch>
         </div>
     );

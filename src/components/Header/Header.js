@@ -8,7 +8,8 @@ const Header = function(props){
         <header className="Header-topnav">
             <img className="Header-logo" alt="img" src={logo} />
             <span className="Header-brandName">Jehová Jireth</span>
-            <Link className="Header-link" to="/sales">Ventana de ventas</Link>
+            <Link className="Header-link" to="/sales">ventas</Link>
+            <Link className="Header-link" to="/facturas">facturas</Link>
             <Link className="Header-link" to="/">Home</Link>
         </header>
     );
