@@ -3,7 +3,8 @@ import './App.css';
 
 import Header from './components/Header/Header';
 
-import SalesWindow from './components/SalesWindow/SalesWindow';
+//import SalesWindow from './components/SalesWindow/SalesWindow';
+import Body from './components/Body/Body';
 import Alert from './components/Alert/Alert';
 
 import {Provider} from 'react-redux';
@@ -15,7 +16,7 @@ function App() {
       <div className="App">
         <Alert/>
         <Header/>
-        <SalesWindow/>
+        <Body/>
       </div>
     </Provider>
   );
