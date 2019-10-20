@@ -14,11 +14,11 @@ const mapStateToProps = state => {
 const connectedSalesWindow = function({salesWindowState}){
     
     return (
-        <div className = "SalesWindow-container">
+        <React.Fragment>
             <Viewer foodList={salesWindowState.actualFoodList}/>
             <ShopingCart shopItems={salesWindowState.shopingCartList} total={salesWindowState.totalPurchase}></ShopingCart>
             <ShopingCalculator calculatorProperties={salesWindowState.calculator}/>
-        </div>
+        </React.Fragment>
     );
 };
 
