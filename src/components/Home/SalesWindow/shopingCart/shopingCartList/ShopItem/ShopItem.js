@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './ShopItem.css';
-import deleteIcon from '../../../../../test-images/delete.png';
+import deleteIcon from '../../../../../../test-images/delete.png';
 
 import { connect } from 'react-redux';
-import { substractFoodToCartList,updateTotalCounter } from '../../../../../redux/actions';
+import { substractFoodToCartList,updateTotalCounter } from '../../../../../../redux/actions';
 
 const mapDispatchToProps = (dispatch) => {
     return {
