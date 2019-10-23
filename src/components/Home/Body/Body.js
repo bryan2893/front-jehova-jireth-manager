@@ -4,7 +4,7 @@ import './Body.css';
 
 import SalesWindow from '../SalesWindow/SalesWindow';
 
-const Home = function(props){
+const Algo = function(props){
     return (
         <h1>HOME</h1>
     );
@@ -19,7 +19,7 @@ const FacturasWindow = function(props){
 const Body = () => (
         <div className="Body-container">
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path="/" component={Algo} />
                 <Route path="/sales" component={SalesWindow} />
                 <Route path="/facturas" component={FacturasWindow} />
             </Switch>

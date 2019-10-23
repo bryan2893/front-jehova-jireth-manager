@@ -10,6 +10,14 @@ const Viewer = function(props){
                 <button>Refrescos</button>
                 <button>Golosinas</button>
                 <button>Postres</button>
+                <button>Comidas</button>
+                <button>Refrescos</button>
+                <button>Golosinas</button>
+                <button>Postres</button>
+                <button>Comidas</button>
+                <button>Refrescos</button>
+                <button>Golosinas</button>
+                <button>Postres</button>
             </div>
             <div className="Viewer-subContainer">
                 <div className="Viewer-productsContainer">

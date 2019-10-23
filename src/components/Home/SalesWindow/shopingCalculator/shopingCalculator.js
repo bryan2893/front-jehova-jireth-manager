@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './shopingCalculator.css';
 
 import { connect } from 'react-redux';
-import { closeCalculator,addFoodToCartList,updateTotalCounter } from '../../../redux/actions';
-import exImg from '../../../test-images/ex.png';
+import { closeCalculator,addFoodToCartList,updateTotalCounter } from '../../../../redux/actions';
+import exImg from '../../../../test-images/ex.png';
 
 function mapDispatchToProps(dispatch) {
     return {
