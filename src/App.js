@@ -9,14 +9,18 @@ import Alert from './components/Alert/Alert';
 
 import {Provider} from 'react-redux';
 import store from './redux/store';
+/*
+<Header/>
+<Body/>
+*/
+import Login from './components/Login/Login';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
         <Alert/>
-        <Header/>
-        <Body/>
+        <Login />
       </div>
     </Provider>
   );
