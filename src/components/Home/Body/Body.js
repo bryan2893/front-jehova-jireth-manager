@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch,Route} from 'react-router-dom';
 import './Body.css';
 
-import SalesWindow from '../../SalesWindow/SalesWindow';
+import SalesWindow from '../SalesWindow/SalesWindow';
 
 const Algo = function(props){
     return (
