@@ -16,8 +16,8 @@ const connectedSalesWindow = function({salesWindowState}){
     return (
         <React.Fragment>
             <Viewer foodList={salesWindowState.actualFoodList}/>
-            <ShopingCart shopItems={salesWindowState.shopingCartList} total={salesWindowState.totalPurchase}></ShopingCart>
-            <ShopingCalculator calculatorProperties={salesWindowState.calculator}/>
+            <ShopingCart shopItems={salesWindowState.shopingCartList} total={salesWindowState.totalPurchase} />
+            <ShopingCalculator calculatorProperties={salesWindowState.calculator} />
         </React.Fragment>
     );
 };
