@@ -1,6 +1,7 @@
-import hamburguesa from '../test-images/hamburguesa.png';
-import taco from '../test-images/taco.png';
+import axios from 'axios';
 
+
+/*
 let foodList = [{id:1,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
         {id:2,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
         {id:3,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
@@ -37,13 +38,8 @@ let foodList = [{id:1,name:"Hamburguesa con papas",image:hamburguesa,price:1700,
 let getFoods = () => {
         return foodList;
 };
+*/
 
-//Obtiene las comidas con "x" categoría.
-const getFoodsByCategory = function(catergoryId){
-
-        let updatedArray = foodList.filter((food) => food.categoryId === catergoryId);
-
-        return updatedArray;
+export const getProdutsByCategory = function(categoryId){
+        return axios.get('http://localhost:3001/products/getProductsByCategory/'+categoryId);
 };
-
-export {getFoods,getFoodsByCategory}

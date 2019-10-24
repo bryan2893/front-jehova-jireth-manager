@@ -1,7 +1,8 @@
 import {SET_PRODUCT_TO_CALCULATOR, CLOSE_CALCULATOR, 
     ADD_FOOD_TO_CARTLIST,
     UPDATE_TOTAL_COUNTER, CLEAN_SALES_WINDOW,
-    CLOSE_ALERT,OPEN_ALERT,HIDE_ALERT,SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST} from '../constants/action-types';
+    CLOSE_ALERT,OPEN_ALERT,HIDE_ALERT,SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST,
+    SET_PRODUCT_CATEGORIES} from '../constants/action-types';
 
 export function setProductToCalculator(payload){
     return {type: SET_PRODUCT_TO_CALCULATOR, payload}
@@ -41,4 +42,8 @@ export function hideAlert(payload){
 
 export function setActualFoodList(payload){
     return {type:SET_ACTUAL_FOOD_LIST, payload};
+}
+
+export function setProductCategories(payload){
+    return {type:SET_PRODUCT_CATEGORIES, payload};
 }

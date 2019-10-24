@@ -5,7 +5,6 @@ import Header from './Header/Header';
 import Body from './Body/Body';
 
 const Home = (props) => {
-    {console.log(props.match.isExact)}
     return (
         <React.Fragment>
             <Header match={props.match}/>
