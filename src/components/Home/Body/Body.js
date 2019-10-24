@@ -5,14 +5,12 @@ import './Body.css';
 import SalesWindow from '../SalesWindow/SalesWindow';
 
 const FacturasWindow = function(props){
-    {console.log("El url de facturas es = "+props.match.url)}
     return (
         <h1>FACTURAS</h1>
     );
 }
 
 const Body = function(props){
-    {console.log("El cuerpo tiene la url = "+props.match.url)}
     return (
         <div className="Body-container">
             <Switch>

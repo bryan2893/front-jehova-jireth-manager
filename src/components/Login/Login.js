@@ -28,12 +28,12 @@ export default class Login extends React.Component{
 
     render(){
         if (this.state.validUser){
-            return <Redirect to="/app" />;
+            return <Redirect to="/app/sales" />;
         }else{
             return (
                 <div className="Login-window-container">
                     <form onSubmit={this.handleOnSubmit} className="Login-form ">
-                        <span className="Login-imgContainer"><img className="Login-img" src={logo}/></span>
+                        <span className="Login-imgContainer"><img className="Login-img" src={logo} alt="logo jehovaJireth"/></span>
                         <input type="text" placeholder="username" onChange={this.handleUsername}/>
                         <input type="password" placeholder="password" onChange={this.handlePassword}/>
                         <button type="submit">Login</button>

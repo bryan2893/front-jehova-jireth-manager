@@ -3,10 +3,9 @@ import './ViewerHeader.css';
 import {Link} from 'react-router-dom';
 
 const ViewerHeader = function(props){
-    {console.log("En el ViewerHeader url es = "+props.match.url)}
     return (
         <div className="ViewerHeader-filterContainer">
-            {props.categories.map((category) => <Link to={`${props.match.url}/${category.categoryId}`} className="ViewerHeader-link" key={category.categoryId}>{category.name}</Link>)}
+            {props.productCategories.map((productCategory) => <Link to={`${props.match.url}/${productCategory.categoryId}`} className="ViewerHeader-link" key={productCategory.categoryId}>{productCategory.name}</Link>)}
         </div>
     );
 };

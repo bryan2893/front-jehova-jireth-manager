@@ -1,18 +1,17 @@
 import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
     UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
-    OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST } from '../constants/action-types';
-
-//PRUEBA
-import {getFoods} from '../../service/food';
+    OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST,
+    SET_PRODUCT_CATEGORIES } from '../constants/action-types';
 
 const initialState = {
     alert:{visibility:'0',reason:"",message:"",type:""},
 
     salesWindowState:{
-        filter:"",
-        allFoods:[],
-        actualFoodList:getFoods(),
+        categoryId:0,
+        productCategories:[],
+        products:[],
+        actualFoodList:[],
         calculator:{
             isOpen:false,
             foodObject:{},
@@ -23,6 +22,12 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
+
+    if (action.type === SET_PRODUCT_CATEGORIES) {
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{productCategories:action.payload})
+        });
+    }
 
     if (action.type === SET_PRODUCT_TO_CALCULATOR) {
         return Object.assign({}, state, {

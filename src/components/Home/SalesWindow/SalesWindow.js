@@ -18,7 +18,7 @@ const connectedSalesWindow = function({salesWindowState,props}){
     
     return (
         <React.Fragment>
-            <Viewer foodList={salesWindowState.actualFoodList} match={props.match}/>
+            <Viewer productCategories={salesWindowState.productCategories} match={props.match}/>
             <ShopingCart shopItems={salesWindowState.shopingCartList} total={salesWindowState.totalPurchase} />
             <ShopingCalculator calculatorProperties={salesWindowState.calculator} />
         </React.Fragment>
