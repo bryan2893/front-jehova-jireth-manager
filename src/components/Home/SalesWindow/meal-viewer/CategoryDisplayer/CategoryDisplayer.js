@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './CategoryDisplayer.css';
 import {getProdutsByCategory} from '../../../../../service/product';
-import CategoryCard from '../CategoryCard/CategoryCard';
+import ProductCard from '../ProductCard/ProductCard';
 
 class CategoryDisplayer extends Component{
     constructor(props){
@@ -30,7 +30,7 @@ class CategoryDisplayer extends Component{
         }else{
             return (
                 <React.Fragment>
-                    {this.state.products.map((product) => (<CategoryCard key={product.productCode} product={product} />))}
+                    {this.state.products.map((product) => (<ProductCard key={product.productCode} product={product} />))}
                 </React.Fragment>
             );
         }

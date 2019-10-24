@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import './CategoryCard.css';
+import './ProductCard.css';
 
-class CategoryCard extends Component{
+class ProductCard extends Component{
     constructor(props){
         super(props);
         this.handleCardClick = this.handleCardClick.bind(this);
@@ -20,4 +20,4 @@ class CategoryCard extends Component{
     }
 }
 
-export default CategoryCard;
+export default ProductCard;
