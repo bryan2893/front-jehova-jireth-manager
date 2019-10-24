@@ -16,16 +16,18 @@
     border-radius: 2px;
 }
 
-.ViewerHeader-filterContainer button{
+.ViewerHeader-link{
     height: 70%;
     width: 100px;
     min-width: 100px;
     margin: 0px 3px 0px 0px;
     border-radius: 10px;
-    border: none;
     background-color: green;
     color: white;
     font-weight: bold;
     font-size: 1em;
-    outline: none;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -7,15 +7,18 @@ import ShopingCalculator from './shopingCalculator/shopingCalculator';
 
 import {connect} from 'react-redux';
 
-const mapStateToProps = state => {
-    return {salesWindowState:state.salesWindowState}
+const mapStateToProps = (state,props) => {
+    return {
+        salesWindowState:state.salesWindowState,
+        props:props
+    }
 };
 
-const connectedSalesWindow = function({salesWindowState}){
+const connectedSalesWindow = function({salesWindowState,props}){
     
     return (
         <React.Fragment>
-            <Viewer foodList={salesWindowState.actualFoodList}/>
+            <Viewer foodList={salesWindowState.actualFoodList} match={props.match}/>
             <ShopingCart shopItems={salesWindowState.shopingCartList} total={salesWindowState.totalPurchase} />
             <ShopingCalculator calculatorProperties={salesWindowState.calculator} />
         </React.Fragment>
