@@ -31,7 +31,7 @@ export default class Login extends React.Component{
     handleOnSubmit(event){
         event.preventDefault();
         if (this.state.usernameText === "" || this.state.passwordText === ""){
-            alert("Datos insuficientes!");
+            console.log("Datos insuficientes!");
             return;
         }else{
             login(this.state.usernameText,this.state.passwordText).then((result) => {
@@ -41,7 +41,7 @@ export default class Login extends React.Component{
                     this.setState({validUser:true});
                 }
             }).catch((error) => {
-                alert(error.message);
+                console.log(error.message);
             });
         }
     }

@@ -21,18 +21,16 @@ class ViewerConnected extends React.Component{
 
     componentDidMount(){
         //Agregar una bandera indicando al usuario que esta esperando o "cargando..."
-        getAllProductCategories().then((result)=>{
-            if(result.status === 200){
-                console.log("Se obtuvo las categorias por llamada a la api!");
-                this.props.setProductCategories(result.data);
-                let firstCategoryObject = result.data[0];
+        getAllProductCategories().then((productCategoriesList)=>{
+            console.log("Se obtuvo las categorias por llamada a la api!");
+            this.props.setProductCategories(productCategoriesList);
+            if(productCategoriesList.length > 0){
+                let firstCategoryObject = productCategoriesList[0];
                 this.props.setHighlightedCategoryId(firstCategoryObject.categoryId);
-                getProdutsByCategory(firstCategoryObject.categoryId).then((response)=>{
-                    if(response.status === 200){
-                        console.log("Se obtuvieron los productos de la primera categoria");
-                        //Asignar los prductos pertenecientes a la primera catagoria al store de redux.
-                        this.props.setCurrentProducts(response.data);
-                    }
+                getProdutsByCategory(firstCategoryObject.categoryId).then((productsList)=>{
+                    console.log("Se obtuvieron los productos de la primera categoria");
+                    //Asignar los prductos pertenecientes a la primera catagoria al store de redux.
+                    this.props.setCurrentProducts(productsList);
                 }).catch((error)=>{
                     alert(error.message);
                 });

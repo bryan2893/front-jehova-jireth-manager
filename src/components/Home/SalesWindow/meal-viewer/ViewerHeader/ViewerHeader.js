@@ -22,10 +22,8 @@ class ViewerHeaderConnected extends React.Component{
         let categoryId = parseInt(event.target.id);
         let selfReference = this;
         selfReference.props.setHighlightedCategoryId(categoryId);
-        getProdutsByCategory(categoryId).then((result)=>{
-            if(result.status === 200){
-                selfReference.props.setCurrentProducts(result.data);
-            }
+        getProdutsByCategory(categoryId).then((productsList)=>{
+            selfReference.props.setCurrentProducts(productsList);   
         }).catch((error)=>{
             alert(error.message);
         });
@@ -40,7 +38,7 @@ class ViewerHeaderConnected extends React.Component{
                         return (<span id={productCategory.categoryId} onClick={this.handleProductCategoryClick} 
                                 className="ViewerHeader-span ViewerHeader-active" key={productCategory.categoryId}>{productCategory.name}</span>);
                     }
-    
+                    
                     return (<span id={productCategory.categoryId} onClick={this.handleProductCategoryClick} 
                     className="ViewerHeader-span" key={productCategory.categoryId}>{productCategory.name}</span>);
                 })}

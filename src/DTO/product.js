@@ -1,7 +1,7 @@
 export default class PRODUCT{
-    constructor(productCode,name,category){
+    constructor(productCode,name,categoryId){
         this.productCode = productCode;
         this.name = name;
-        this.category = category;
+        this.categoryId = categoryId;
     };
 }
