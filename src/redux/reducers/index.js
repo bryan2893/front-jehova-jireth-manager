@@ -2,16 +2,17 @@ import { SET_PRODUCT_TO_CALCULATOR,
     CLOSE_CALCULATOR,ADD_FOOD_TO_CARTLIST,
     UPDATE_TOTAL_COUNTER,CLEAN_SALES_WINDOW,CLOSE_ALERT,
     OPEN_ALERT,HIDE_ALERT, SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST,
-    SET_PRODUCT_CATEGORIES } from '../constants/action-types';
+    SET_PRODUCT_CATEGORIES,SET_HIGHLIGHTEDCATEGORYID,SET_CURRENT_PRODUCTS } from '../constants/action-types';
 
 const initialState = {
     alert:{visibility:'0',reason:"",message:"",type:""},
 
     salesWindowState:{
-        categoryId:0,
-        productCategories:[],
-        products:[],
-        actualFoodList:[],
+        productShower:{
+            highlightedCategoryId:0,
+            productCategories:[],
+            currentProducts:[]
+        },
         calculator:{
             isOpen:false,
             foodObject:{},
@@ -25,7 +26,19 @@ function rootReducer(state = initialState, action) {
 
     if (action.type === SET_PRODUCT_CATEGORIES) {
         return Object.assign({}, state, {
-            salesWindowState: Object.assign({},state.salesWindowState,{productCategories:action.payload})
+            salesWindowState: Object.assign({},state.salesWindowState,{productShower:Object.assign({},state.salesWindowState.productShower,{productCategories:action.payload})})
+        });
+    }
+
+    if (action.type === SET_HIGHLIGHTEDCATEGORYID) {
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{productShower:Object.assign({},state.salesWindowState.productShower,{highlightedCategoryId:action.payload})})
+        });
+    }
+
+    if (action.type === SET_CURRENT_PRODUCTS) {
+        return Object.assign({}, state, {
+            salesWindowState: Object.assign({},state.salesWindowState,{productShower:Object.assign({},state.salesWindowState.productShower,{currentProducts:action.payload})})
         });
     }
 

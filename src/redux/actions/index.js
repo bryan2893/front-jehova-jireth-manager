@@ -2,7 +2,7 @@ import {SET_PRODUCT_TO_CALCULATOR, CLOSE_CALCULATOR,
     ADD_FOOD_TO_CARTLIST,
     UPDATE_TOTAL_COUNTER, CLEAN_SALES_WINDOW,
     CLOSE_ALERT,OPEN_ALERT,HIDE_ALERT,SUBSTRACT_FOOD_TO_CARTLIST,SET_ACTUAL_FOOD_LIST,
-    SET_PRODUCT_CATEGORIES} from '../constants/action-types';
+    SET_PRODUCT_CATEGORIES,SET_HIGHLIGHTEDCATEGORYID,SET_CURRENT_PRODUCTS} from '../constants/action-types';
 
 export function setProductToCalculator(payload){
     return {type: SET_PRODUCT_TO_CALCULATOR, payload}
@@ -46,4 +46,12 @@ export function setActualFoodList(payload){
 
 export function setProductCategories(payload){
     return {type:SET_PRODUCT_CATEGORIES, payload};
+}
+
+export function setHighlightedCategoryId(payload){
+    return {type:SET_HIGHLIGHTEDCATEGORYID, payload};
+}
+
+export function setCurrentProducts(payload){
+    return {type:SET_CURRENT_PRODUCTS, payload};
 }
