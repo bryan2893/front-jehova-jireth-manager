@@ -4,6 +4,8 @@ import logo from '../../test-images/logo.png';
 
 import {Redirect} from 'react-router-dom';
 
+import {login} from '../../service/auth';
+
 export default class Login extends React.Component{
     constructor(props){
         super(props);
@@ -11,6 +13,11 @@ export default class Login extends React.Component{
         this.handlePassword = this.handlePassword.bind(this);
         this.handleOnSubmit = this.handleOnSubmit.bind(this);
         this.state = {usernameText:"",passwordText:"",validUser:false};
+        this.idInput = React.createRef();
+    }
+
+    componentDidMount(){
+        this.idInput.current.focus();
     }
 
     handleUsername(event){
@@ -23,7 +30,20 @@ export default class Login extends React.Component{
 
     handleOnSubmit(event){
         event.preventDefault();
-        this.setState({validUser:true});
+        if (this.state.usernameText === "" || this.state.passwordText === ""){
+            console.log("Datos insuficientes!");
+            return;
+        }else{
+            login(this.state.usernameText,this.state.passwordText).then((result) => {
+                if(result.status === 200){
+                    let token = result.data.token;
+                    console.log("Token: "+token);
+                    this.setState({validUser:true});
+                }
+            }).catch((error) => {
+                console.log(error.message);
+            });
+        }
     }
 
     render(){
@@ -34,8 +54,8 @@ export default class Login extends React.Component{
                 <div className="Login-window-container">
                     <form onSubmit={this.handleOnSubmit} className="Login-form ">
                         <span className="Login-imgContainer"><img className="Login-img" src={logo} alt="logo jehovaJireth"/></span>
-                        <input type="text" placeholder="username" onChange={this.handleUsername}/>
-                        <input type="password" placeholder="password" onChange={this.handlePassword}/>
+                        <input ref={this.idInput} type="text" placeholder="cedula" onChange={this.handleUsername}/>
+                        <input type="password" placeholder="contraseña" onChange={this.handlePassword}/>
                         <button type="submit">Login</button>
                     </form>
                 </div>

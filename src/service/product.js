@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import PRODUCT from '../DTO/product';
 
 /*
 let foodList = [{id:1,name:"Hamburguesa con papas",image:hamburguesa,price:1700,categoryId:1},
@@ -40,6 +40,18 @@ let getFoods = () => {
 };
 */
 
-export const getProdutsByCategory = function(categoryId){
-        return axios.get('http://localhost:3001/products/getProductsByCategory/'+categoryId);
+export const getProdutsByCategory = function (categoryId) {
+        return new Promise((resolve, reject) => {
+                axios.get('http://localhost:3001/products/getProductsByCategory/' + categoryId).then((response) => {
+                        if (response.status === 200) {
+                                let productsList = response.data;
+                                let productListTransformed = productsList.map(product => {
+                                        return new PRODUCT(product.productCode, product.name, product.categoryId);
+                                });
+                                resolve(productListTransformed);
+                        }
+                }).catch((error) => {
+                        reject({ error: error.message });
+                });
+        });
 };
