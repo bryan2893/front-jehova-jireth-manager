@@ -1,0 +1,28 @@
+.Modal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+
+.Modal-modal-main {
+    position:fixed;
+    background: white;
+    width: 40%;
+    height: auto;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 3px;
+}
+
+.Modal-display-block {
+    display: block;
+}
+
+.Modal-display-none {
+    display: none;
+}

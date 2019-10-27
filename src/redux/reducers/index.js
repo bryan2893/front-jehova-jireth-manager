@@ -7,9 +7,14 @@ import { SET_PRODUCT_TO_CALCULATOR,
 const initialState = {
     alert:{visibility:'0',reason:"",message:"",type:""},
 
+    modal:{
+        show:false,
+        children: null
+    },
+
     salesWindowState:{
         productShower:{
-            highlightedCategoryId:0,
+            highlightedCategoryId:null,
             productCategories:[],
             currentProducts:[]
         },
