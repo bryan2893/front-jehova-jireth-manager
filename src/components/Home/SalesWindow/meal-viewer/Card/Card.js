@@ -6,8 +6,8 @@ import {addFoodToCartList,updateTotalCounter} from '../../../../../redux/actions
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addFoodToCartList: food => dispatch(addFoodToCartList(food)),
-        updateTotalCounter: something => dispatch(updateTotalCounter(something))
+        addFoodToCartList: variety => dispatch(addFoodToCartList(variety)),
+        updateTotalCounter: somethingNull => dispatch(updateTotalCounter(somethingNull))
     };
 };
 
@@ -18,16 +18,16 @@ class CardConnected extends Component{
     }
 
     handleCardClick(event){
-        let foodObject = Object.assign({},this.props.food,{quantity:1});
+        let varietyObject = Object.assign({},this.props.variety,{quantity:1});
 
-        this.props.addFoodToCartList(foodObject);
+        this.props.addFoodToCartList(varietyObject);
         this.props.updateTotalCounter(null);
     }
 
     render(){
         return (
             <div className="Card-div" onClick={this.handleCardClick}>
-                <p className="Card-p">{this.props.food.name}</p>
+                <p className="Card-p">{this.props.variety.name}</p>
             </div>
         );
     }

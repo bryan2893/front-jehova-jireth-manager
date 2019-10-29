@@ -7,21 +7,18 @@ import { SET_PRODUCT_TO_CALCULATOR,
 const initialState = {
     alert:{visibility:'0',reason:"",message:"",type:""},
 
-    modal:{
-        show:false,
-        children: null
-    },
-
     salesWindowState:{
         productShower:{
             highlightedCategoryId:null,
             productCategories:[],
             currentProducts:[]
         },
+
         calculator:{
             isOpen:false,
             foodObject:{},
         },
+
         shopingCartList:[],
         totalPurchase:0
     }
@@ -62,7 +59,7 @@ function rootReducer(state = initialState, action) {
     if (action.type === ADD_FOOD_TO_CARTLIST) {
         let foodByPayload = action.payload;
 
-        let findedFood = state.salesWindowState.shopingCartList.find((food)=> food.id === foodByPayload.id);
+        let findedFood = state.salesWindowState.shopingCartList.find((food)=> food.varietyId === foodByPayload.varietyId);
         
         //Si la comida con "x" id fue agregada entonces se le suma la cantidad solamente, sino se agrega completamente a la lista.
         if (!findedFood){
@@ -74,7 +71,7 @@ function rootReducer(state = initialState, action) {
             let copyOfFoods = [...state.salesWindowState.shopingCartList];
 
             let fixedArray = copyOfFoods.map(function(food){
-                if (food.id === foodByPayload.id){
+                if (food.varietyId === foodByPayload.varietyId){
                     return Object.assign({},food,{quantity:food.quantity + foodByPayload.quantity});
                 }
                 return Object.assign({},food);
@@ -92,7 +89,7 @@ function rootReducer(state = initialState, action) {
         let copyOfFoods = [...state.salesWindowState.shopingCartList];
 
         let updatedArray = copyOfFoods.map(function(food){
-            if (food.id === foodByPayload.id){
+            if (food.varietyId === foodByPayload.varietyId){
                 return Object.assign({},food,{quantity:food.quantity - 1});
             }
             return Object.assign({},food);
@@ -101,7 +98,7 @@ function rootReducer(state = initialState, action) {
         return Object.assign({}, state, {
             salesWindowState: Object.assign({},state.salesWindowState,{shopingCartList:updatedArray.filter(food => food.quantity > 0)})
         });
-
+        
     }
 
     if(action.type === UPDATE_TOTAL_COUNTER){
