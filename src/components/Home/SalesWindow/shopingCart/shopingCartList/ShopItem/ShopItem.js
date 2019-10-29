@@ -21,7 +21,7 @@ class ShopItemConnected extends Component {
 
     handleDeleteButton(event){
         this.props.substractFoodToCartList(this.props.variety);
-        this.props.updateTotalCounter(null);//se dispara la accion para actualizar el contador.
+        this.props.updateTotalCounter(null);
     }
 
     render() {
