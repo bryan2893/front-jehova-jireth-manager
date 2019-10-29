@@ -6,7 +6,7 @@ import ShopItem from './ShopItem/ShopItem';
 const ShopingCartList = function(props) {
     return (
         <div className="shopingCartList-container">
-            {props.shopItems.map( (fod) => <ShopItem key={fod.varietyId} food={fod}/> )}
+            {props.shopItems.map( (variety) => <ShopItem key={variety.varietyId} variety={variety}/> )}
         </div>
     );
 }
