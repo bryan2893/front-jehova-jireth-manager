@@ -88,8 +88,11 @@ function rootReducer(state = initialState, action) {
 
         let copyOfFoods = [...state.salesWindowState.shopingCartList];
 
+        console.log("Entró al metodo substract_food_to_cartlist");
         let updatedArray = copyOfFoods.map(function(food){
             if (food.varietyId === foodByPayload.varietyId){
+                console.log("Hizo match en varietyId");
+                console.log("El objeto que encontró es éste "+ JSON.stringify(food));
                 return Object.assign({},food,{quantity:food.quantity - 1});
             }
             return Object.assign({},food);

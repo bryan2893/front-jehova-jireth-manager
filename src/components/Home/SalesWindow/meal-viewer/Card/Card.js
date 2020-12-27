@@ -28,6 +28,7 @@ class CardConnected extends Component{
     }
 
     handleDeleteClick(event){
+        event.stopPropagation();
         this.props.substractFoodToCartList(this.props.variety);
         this.props.updateTotalCounter(null);
     }
