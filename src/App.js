@@ -1,4 +1,5 @@
 import React from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
 import './App.css';
 import Alert from './components/Alert/Alert';
 import Home from './components/Home/Home';
