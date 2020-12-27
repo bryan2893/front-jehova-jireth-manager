@@ -22,7 +22,7 @@ export default class ProductVarietiesDisplayer extends Component{
     render(){
         return (
           <React.Fragment>
-              {this.state.varietiesList.map((variety) => {return <Card key={variety.varietyId} food={variety} />})}
+              {this.state.varietiesList.map((variety) => {return <Card key={variety.varietyId} variety={variety} />})}
           </React.Fragment>
         );
     }

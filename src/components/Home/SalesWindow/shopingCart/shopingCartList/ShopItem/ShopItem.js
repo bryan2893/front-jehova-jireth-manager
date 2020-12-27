@@ -7,8 +7,8 @@ import { substractFoodToCartList,updateTotalCounter } from '../../../../../../re
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        substractFoodToCartList: food => dispatch(substractFoodToCartList(food)),
-        updateTotalCounter: something => dispatch(updateTotalCounter(something))
+        substractFoodToCartList: variety => dispatch(substractFoodToCartList(variety)),
+        updateTotalCounter: somethingNull => dispatch(updateTotalCounter(somethingNull))
     };
 };
 
@@ -20,19 +20,19 @@ class ShopItemConnected extends Component {
     }
 
     handleDeleteButton(event){
-        this.props.substractFoodToCartList(this.props.food);
-        this.props.updateTotalCounter(null);//se dispara la accion para actualizar el contador.
+        this.props.substractFoodToCartList(this.props.variety);
+        this.props.updateTotalCounter(null);
     }
 
     render() {
         return (
             <div className="ShopItem-container">
-                <span>{this.props.food.name}</span>
+                <span>{this.props.variety.name}</span>
                 <span className="algo">
                     <span onClick={this.handleDeleteButton}>
                         <img className="shopItem-img" alt="img" src={deleteIcon} />
                     </span>
-                    <span className="shopItem-floatShower">{this.props.food.quantity}</span>
+                    <span className="shopItem-floatShower">{this.props.variety.quantity}</span>
                 </span>
             </div>
         );
