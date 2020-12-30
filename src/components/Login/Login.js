@@ -1,6 +1,6 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
-import M from 'materialize-css';
+//import M from 'materialize-css';
 import './Login.css';
 import logo from '../../test-images/logo.png';
 
@@ -34,13 +34,6 @@ function Login(){
             }
         });
     }
-
-    useEffect(() => {
-        const token = getUserToken();
-        if(token){
-            setIsloggedIn(true);
-        }
-    },[]);
 
     const loginForm = (
         <div className="Login-window-container">
