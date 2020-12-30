@@ -1,0 +1,1 @@
+export const TOKEN_TRABAJADOR = "TOKEN_TRABAJADOR";

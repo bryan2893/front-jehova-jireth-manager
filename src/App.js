@@ -16,8 +16,11 @@ function App() {
       <div className="App">
         <Alert />
         <Switch>
+
           <Route exact path="/" component={Login} />
-          <Route path="/app" component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="*" component={() => {return <h1>********RUTA NO EXISTE*******</h1>}} />
+
         </Switch>
       </div>
     </Provider>

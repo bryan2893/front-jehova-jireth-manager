@@ -1,23 +1,48 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css';
 import './Login.css';
 import logo from '../../test-images/logo.png';
 
+import {authenticateUser,setUserToken,getUserToken} from '../../service/auth';
+
 import {Redirect} from 'react-router-dom';
+//import {login} from '../../service/auth';
 
-import {login} from '../../service/auth';
 
+function Login(){
 
-function Login(props){
+    const [isLoggedIn,setIsloggedIn] = useState(false);
 
     function handleOnSubmit(event){
         event.preventDefault();
         let [cedula,contraseña] = event.target;
-        // cedula.value and contraseña.value get values of each one...
+        //hacer llamada al API para verificar las credenciales del usaurio.
+        authenticateUser(cedula.value,contraseña.value).then((response) => {
+
+            const sendedData = response.data;
+            setUserToken(sendedData.token);
+            setIsloggedIn(true);
+
+        }).catch((error) => {
+            if(error.response){
+                const statusCode = error.response.status;// Se obtiene el código de error.
+                const sendedData = error.response.data;//Se obtiene la data enviada.
+            }else{
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            }
+        });
     }
 
-    return (
+    useEffect(() => {
+        const token = getUserToken();
+        if(token){
+            setIsloggedIn(true);
+        }
+    },[]);
+
+    const loginForm = (
         <div className="Login-window-container">
             <form onSubmit={handleOnSubmit} className="Login-form ">
                 <span className="Login-imgContainer"><img className="Login-img" src={logo} alt="logo jehovaJireth"/></span>
@@ -38,7 +63,10 @@ function Login(props){
 
             </form>
         </div>
-    )
+    );
+
+    return !isLoggedIn ? loginForm : <Redirect to='/home'/>
+
 }
 
 export default Login;
