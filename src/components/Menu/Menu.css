@@ -1,0 +1,24 @@
+.Menu-floating-button{
+    position: fixed;
+    right: 4px;
+    bottom: 4px;
+}
+
+.Menu-fixed-window{
+    height: calc(100vh - 64px);
+    overflow-y: scroll;
+}
+
+.Menu-buttons-container{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.Menu-buttons-container a{
+    margin-left: 5px;
+}
+
+.Menu-sticky-toolbar{
+    position:sticky;
+    top: 0px;
+}

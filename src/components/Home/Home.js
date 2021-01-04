@@ -5,8 +5,11 @@ import './Home.css';
 
 import Navbar from '../Navbar/Navbar';
 import HomeMenu from '../HomeMenu/HomeMenu';
+import Menu from '../Menu/Menu';
 
-const Home = ({match}) => {
+const Home = ({...rest}) => {
+
+    const {match} = {...rest};
 
     useEffect(() => {
         let dropDownsElements = document.querySelectorAll('.dropdown-trigger');
@@ -16,12 +19,13 @@ const Home = ({match}) => {
     return (
         <div>
 
-            <Navbar match = {match}/>
+            <Navbar {...rest} />
 
             <Switch>
+                
                 <Route exact path={`${match.path}`} component = {HomeMenu} />
 
-                <Route path={`${match.path}/agregar_trabajador`} component={() => {
+                <Route exact path={`${match.path}/agregar_trabajador`} component={() => {
                     return (
                         <h1>
                             AGREGAR TRABAJADOR
@@ -32,6 +36,8 @@ const Home = ({match}) => {
                 <Route exact path={`${match.path}/personal`} component = {() => {
                     return <h1>Administracion de personal</h1>;
                 }} />
+
+                <Route exact path={`${match.path}/menu_comidas`} component={Menu}/>
 
             </Switch>
 

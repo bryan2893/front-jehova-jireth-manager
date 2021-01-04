@@ -56,7 +56,7 @@ const HomeMenu = (props) => {
                         <p>Crea, actualiza, elimina y consulta el menú de comidas</p>
                         </div>
                         <div class="card-action">
-                        <Link to={`${props.match.url}/ad_menu_comidas`}>Entrar</Link>
+                        <Link to={`${props.match.url}/menu_comidas`}>Entrar</Link>
                         </div>
                     </div>
                 </div>
