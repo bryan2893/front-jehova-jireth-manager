@@ -1,65 +1,65 @@
-import React from 'react';
+import React,{useState} from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
+//import M from 'materialize-css';
 import './Login.css';
 import logo from '../../test-images/logo.png';
 
+import {authenticateUser,setUserToken,getUserToken} from '../../service/auth';
+
 import {Redirect} from 'react-router-dom';
+//import {login} from '../../service/auth';
 
-import {login} from '../../service/auth';
 
-export default class Login extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleUsername = this.handleUsername.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
-        this.handleOnSubmit = this.handleOnSubmit.bind(this);
-        this.state = {usernameText:"",passwordText:"",validUser:false};
-        this.idInput = React.createRef();
-    }
+function Login(){
 
-    componentDidMount(){
-        this.idInput.current.focus();
-    }
+    const [isLoggedIn,setIsloggedIn] = useState(false);
 
-    handleUsername(event){
-        this.setState({usernameText:event.target.value});
-    }
-
-    handlePassword(event){
-        this.setState({passwordText:event.target.value});
-    }
-
-    handleOnSubmit(event){
+    function handleOnSubmit(event){
         event.preventDefault();
-        if (this.state.usernameText === "" || this.state.passwordText === ""){
-            console.log("Datos insuficientes!");
-            return;
-        }else{
-            login(this.state.usernameText,this.state.passwordText).then((result) => {
-                if(result.status === 200){
-                    let token = result.data.token;
-                    console.log("Token: "+token);
-                    this.setState({validUser:true});
-                }
-            }).catch((error) => {
-                console.log(error.message);
-            });
-        }
+        let [cedula,contraseña] = event.target;
+        //hacer llamada al API para verificar las credenciales del usaurio.
+        authenticateUser(cedula.value,contraseña.value).then((response) => {
+
+            const sendedData = response.data;
+            setUserToken(sendedData.token);
+            setIsloggedIn(true);
+
+        }).catch((error) => {
+            if(error.response){
+                const statusCode = error.response.status;// Se obtiene el código de error.
+                const sendedData = error.response.data;//Se obtiene la data enviada.
+            }else{
+                const errorMessage = error.message;
+                console.log(errorMessage);
+            }
+        });
     }
 
-    render(){
-        if (this.state.validUser){
-            return <Redirect to="/app/sales" />;
-        }else{
-            return (
-                <div className="Login-window-container">
-                    <form onSubmit={this.handleOnSubmit} className="Login-form ">
-                        <span className="Login-imgContainer"><img className="Login-img" src={logo} alt="logo jehovaJireth"/></span>
-                        <input ref={this.idInput} type="text" placeholder="cedula" onChange={this.handleUsername}/>
-                        <input type="password" placeholder="contraseña" onChange={this.handlePassword}/>
-                        <button type="submit">Login</button>
-                    </form>
+    const loginForm = (
+        <div className="Login-window-container">
+            <form onSubmit={handleOnSubmit} className="Login-form ">
+                <span className="Login-imgContainer"><img className="Login-img" src={logo} alt="logo jehovaJireth"/></span>
+
+                <div id="inpCedula" className="input-field Login-input">
+                    <input id="cedula" type="text" className="validate" name="cedula"/>
+                    <label htmlFor="cedula">Cedula</label>
                 </div>
-            );
-        }
-    }
+
+                <div id="inpContraseña" className="input-field Login-input">
+                    <input id="contraseña" type="password" className="validate" name="contraseña"/>
+                    <label htmlFor="contraseña">Contraseña</label>
+                </div>
+
+                <button className="btn waves-effect waves-light" type="submit">
+                    Ingresar
+                </button>
+
+            </form>
+        </div>
+    );
+
+    return !isLoggedIn ? loginForm : <Redirect to='/home'/>
+
 }
+
+export default Login;

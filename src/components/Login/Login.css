@@ -1,7 +1,6 @@
 .Login-window-container {
     width: 100vw;
     height: 100vh;
-    background-color: #689f38;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,30 +8,16 @@
 
 .Login-form{
     width: 400px;
-    height: 300px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 
-.Login-form input{
-    width: 85%;
-    height: 40px;
-    padding: 3px;
-    border-radius: 4px;
-    font-size: 1em;
-    border: none;
-    box-sizing: border-box;
-}
-
-.Login-form button{
-    width: 85%;
-    height: 35px;
-    padding: 3px;
-    border-radius: 4px;
-    font-size: 1em;
-    border: none;
+.Login-img{
+    width: 150px;
+    height: 150px;
 }
 
 .Login-imgContainer{
@@ -41,7 +26,10 @@
     justify-content: center;
 }
 
-.Login-img{
+.Login-input{
+    width: 100%;
+}
+
+.Login-button{
     width: 150px;
-    height: 150px;
 }
