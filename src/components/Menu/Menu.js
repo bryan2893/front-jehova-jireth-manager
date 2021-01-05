@@ -26,17 +26,22 @@ const Menu = () => {
     return (
         <React.Fragment>
             <div className="row">
+
                 <div className="col s5 m9 Menu-fixed-window">
 
-                    <div className="row" style={{marginBottom:'1px'}}>
+                    <div className="Menu-sticky-navigation-bar">
+                        <i class="medium material-icons">arrow_back</i>
+                    </div>
 
-                        <div class="input-field col s7">
+                    <div id="subToolbar" className="row">
+
+                        <div className="input-field col s7">
                             <i class="material-icons prefix">search</i>
                             <input id="icon_telephone" type="tel" class="validate" />
                             <label for="icon_telephone">Buscar</label>
                         </div>
 
-                        <div class="input-field col s5">
+                        <div className="input-field col s5">
                             <select>
                                 <option value="" disabled selected>Filtrar por etiqueta</option>
                                 <option value="1">Option 1</option>
@@ -47,34 +52,39 @@ const Menu = () => {
 
                     </div>
 
-                    <table className="highlight centered">
+                    <div className="Menu-table-container">
 
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Precio</th>
-                                <th>Accion</th>
-                            </tr>
-                        </thead>
+                        <table className="highlight centered">
 
-                        <tbody>
-                            {
-                                foodsList.map((producto) => {
-                                    return (
-                                        <tr key={producto.id_producto} onClick={() => {handleOnRowClicked(producto.id_producto)}}>
-                                            <td>{producto.nombre}</td>
-                                            <td>{'₡ '+producto.precio}</td>
-                                            <td className="Menu-buttons-container">
-                                                <a className="waves-effect waves-light indigo lighten-4 btn-large"><i className="material-icons red-text">delete</i></a>
-                                                <a class="waves-effect waves-light indigo lighten-4 btn-large"><i class="material-icons green-text">edit</i></a>
-                                            </td>
-                                        </tr>
-                                    );
-                                })
-                            }
-                        </tbody>
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Accion</th>
+                                </tr>
+                            </thead>
 
-                    </table>
+                            <tbody>
+                                {
+                                    foodsList.map((producto) => {
+                                        return (
+                                            <tr key={producto.id_producto} onClick={() => {handleOnRowClicked(producto.id_producto)}}>
+                                                <td>{producto.nombre}</td>
+                                                <td>{'₡ '+producto.precio}</td>
+                                                <td className="Menu-buttons-container">
+                                                    <a className="waves-effect waves-light indigo lighten-4 btn-large"><i className="material-icons red-text">delete</i></a>
+                                                    <a class="waves-effect waves-light indigo lighten-4 btn-large"><i class="material-icons green-text">edit</i></a>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })
+                                }
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
                 </div>
                 <div className="col s7 m3">
                     <h3 style={{textAlign:'center'}}>Etiquetas asociadas</h3>

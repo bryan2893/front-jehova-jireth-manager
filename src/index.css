@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+:root{
+  --mainToolBarHeigth:64px;
+  --subToolbarHeigth:calc(50px + 20px);
+  --navigationToolBarHeigth:60px;
+  --layoutHeigth:calc(100vh - var(--mainToolBarHeigth));
+}
