@@ -8,29 +8,6 @@
     height: var(--layoutHeigth);
 }
 
-.Menu-buttons-container{
-    display: flex;
-    flex-direction: row-reverse;
-}
-
-.Menu-buttons-container a{
-    margin-left: 5px;
-}
-
-.Menu-sticky-navigation-bar{
-    position:sticky;
-    top: 0px;
-    height: var(--navigationToolBarHeigth);
-}
-
-#subToolbar {
-    height: 50px;
-}
-
-#subToolbar .input-field{
-    margin: 0 0 0 0;
-}
-
 .Menu-table-container{
     height: calc(100vh - (var(--mainToolBarHeigth) + var(--navigationToolBarHeigth) + var(--subToolbarHeigth)));
     overflow-y: scroll;

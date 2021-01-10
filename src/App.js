@@ -2,9 +2,6 @@ import React from 'react';
 import './App.css';
 import Home from './components/Home/Home';
 
-import {Provider} from 'react-redux';
-import store from './redux/store';
-
 import {Switch,Route} from 'react-router-dom';
 
 import Login from './components/Login/Login';
@@ -13,7 +10,6 @@ import UserLoggedMiddleware from './GUARDS/UserLogged';
 
 function App() {
   return (
-    <Provider store={store}>
       <div className="App">
         <Switch>
 
@@ -23,7 +19,6 @@ function App() {
 
         </Switch>
       </div>
-    </Provider>
   );
 }
 

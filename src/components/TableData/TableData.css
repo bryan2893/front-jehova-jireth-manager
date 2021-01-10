@@ -1,0 +1,8 @@
+.TableData-buttons-container{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.TableData-buttons-container a{
+    margin-left: 5px;
+}

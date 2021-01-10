@@ -1,90 +1,84 @@
 import React,{useState,useEffect} from 'react';
-import {getProductos} from '../../service/productos';
+import {getProductsWithCategories} from '../../service/productos';
 import '../Menu/Menu.css';
-import M from 'materialize-css';
+import NavigationBar from '../NavigationBar/NavigationBar';
+import SubToolBar from '../SubToolBar/SubToolBar';
+import TableData from '../TableData/TableData';
 
-const Menu = () => {
+let foodListSaved = [];
+
+const Menu = ({history}) => {
 
     const [foodsList,setFoodsList] = useState([]);
 
     useEffect(() => {
-        let elems = document.querySelectorAll('select');
-        let instances = M.FormSelect.init(elems);
-        getProductos().then((listaProductos) => {
-            setFoodsList(listaProductos);
+
+        getProductsWithCategories().then((data) => {
+            let {productos} = data;
+            let modifiedProductsList = productos.map((product) => {
+                let object = {};
+                object.id_producto = product.id_producto;
+                object.nombre = product.nombre;
+                object.precio = product.precio;
+                object.categorias = product.categorias;
+                //object.categorias = product.categorias;
+                return object;
+            });
+
+            foodListSaved = modifiedProductsList.slice();
+            console.log(modifiedProductsList);
+            setFoodsList(modifiedProductsList);
+
         }).catch((error) => {
+
         });
 
     },[]);
 
     const [tagsList,setTagsList] = useState([]);
 
-    function handleOnRowClicked(something){
-        setTagsList([{id:1,nombre:'Hamburguesa'},{id:2,nombre:'Tacos'},{id:3,nombre:'Refrescos'}]);
+    function onSearchBarKeyUpHandle(event){
+        const searchBarValue = event.target.value;
+        if(searchBarValue.length === 0){
+            setFoodsList(foodListSaved);
+        }else{
+            let productsListCopy = foodListSaved.slice();
+            let newProductsList = productsListCopy.filter((product) => {
+                return product.nombre.search(searchBarValue) !== -1;
+            });
+            setFoodsList(newProductsList);
+        }
+    }
+
+    function onCategorySelectChangeHandle(event){
+        const selectedValue = event.target.value;
+        alert(selectedValue);
+        /*
+        if(selectedValue.length === 0){
+            setFoodsList(foodListSaved);
+        }else{
+            let productsListCopy = foodListSaved.slice();
+            let newProductsList = productsListCopy.filter((product) => {
+                return product.nombre.search(searchBarValue) !== -1;
+            });
+            setFoodsList(newProductsList);
+        }
+        */
     }
 
     return (
         <React.Fragment>
             <div className="row">
-
                 <div className="col s5 m9 Menu-fixed-window">
+                    <NavigationBar goBack={history.goBack}/>
 
-                    <div className="Menu-sticky-navigation-bar">
-                        <i class="medium material-icons">arrow_back</i>
-                    </div>
-
-                    <div id="subToolbar" className="row">
-
-                        <div className="input-field col s7">
-                            <i class="material-icons prefix">search</i>
-                            <input id="icon_telephone" type="tel" class="validate" />
-                            <label for="icon_telephone">Buscar</label>
-                        </div>
-
-                        <div className="input-field col s5">
-                            <select>
-                                <option value="" disabled selected>Filtrar por etiqueta</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </div>
-
-                    </div>
+                    <SubToolBar 
+                    onKeyUpSearchBar = {onSearchBarKeyUpHandle} 
+                    onCategorySelect={onCategorySelectChangeHandle}/>
 
                     <div className="Menu-table-container">
-
-                        <table className="highlight centered">
-
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Precio</th>
-                                    <th>Accion</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                {
-                                    foodsList.map((producto) => {
-                                        return (
-                                            <tr key={producto.id_producto} onClick={() => {handleOnRowClicked(producto.id_producto)}}>
-                                                <td>{producto.nombre}</td>
-                                                <td>{'₡ '+producto.precio}</td>
-                                                <td className="Menu-buttons-container">
-                                                    <a className="waves-effect waves-light indigo lighten-4 btn-large"><i className="material-icons red-text">delete</i></a>
-                                                    <a class="waves-effect waves-light indigo lighten-4 btn-large"><i class="material-icons green-text">edit</i></a>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })
-                                }
-                            </tbody>
-
-                        </table>
-
+                        <TableData headersList={['Nombre','Precio','Accion']} dataList = {foodsList} keyName="id_producto"/>
                     </div>
-
                 </div>
                 <div className="col s7 m3">
                     <h3 style={{textAlign:'center'}}>Etiquetas asociadas</h3>
@@ -92,9 +86,9 @@ const Menu = () => {
                     {
                         tagsList.map((tag) => {
                             return (
-                                <div class="chip" key={tag.id}>
+                                <div className="chip" key={tag.id_categoria}>
                                     {tag.nombre}
-                                    <i class="close material-icons">close</i>
+                                    <i className="close material-icons">close</i>
                                 </div>
                             );
                         })
@@ -102,11 +96,9 @@ const Menu = () => {
                 
                 </div>
             </div>
-
             <div className="Menu-floating-button">
-                <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+                <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
             </div>
-            
         </React.Fragment>
     );
 }

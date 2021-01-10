@@ -25,7 +25,7 @@ const NavBar = ({match,history}) => {
                         <li><Link to={`${match.url}/ventas`}>Ventas</Link></li>
                         <li><Link to={`${match.url}/compras`}>Compras</Link></li>
                         <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Trabajadores<i className="material-icons right">arrow_drop_down</i></a></li>
-                        <li><a onClick={logOut}><i class="material-icons left">logout</i>Logout</a></li>
+                        <li><a onClick={logOut}><i className="material-icons left">logout</i>Logout</a></li>
                     </ul>
                     </div>
                 </nav>
