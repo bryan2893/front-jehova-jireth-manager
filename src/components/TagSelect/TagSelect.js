@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import M from 'materialize-css';
-import {getCategorias} from '../../../service/categorias_productos';
+import {getCategorias} from '../../service/categorias_productos';
 
 const TagSelect = ({onCategorySelect}) => {
 
@@ -24,6 +24,7 @@ const TagSelect = ({onCategorySelect}) => {
         <div className="input-field col s5">
             <select onChange={onCategorySelect}>
                 <option value="" disabled selected>Filtrar por etiqueta</option>
+                <option value="todo">todo</option>
                 {tags.map((opt) => {
                     return (
                         <option key={opt.id_categoria} value={opt.id_categoria}>{opt.nombre}</option>

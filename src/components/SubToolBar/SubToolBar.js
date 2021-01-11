@@ -1,6 +1,6 @@
 import React from 'react';
 import './SubToolBar.css';
-import TagSelect from '../SubToolBar/TagSelect/TagSelect';
+import TagSelect from '../TagSelect/TagSelect';
 
 const SubToolBar = (props) => {
 

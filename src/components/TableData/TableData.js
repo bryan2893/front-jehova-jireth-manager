@@ -1,7 +1,8 @@
 import React from 'react';
 import './TableData.css';
 
-const TableData = ({headersList,dataList,keyName}) => {
+const TableData = ({headersList,dataList,keyName,selectedItemHandler}) => {
+
     return (
         <table className="highlight centered">
 
@@ -21,8 +22,7 @@ const TableData = ({headersList,dataList,keyName}) => {
                 {
                     dataList.map((data) => {
                         return (
-                            <tr key={data[keyName]}>
-                                
+                            <tr key={data[keyName]} onClick={() => {selectedItemHandler(data);}}>
                                 {
                                     Object.keys(data).map((objectKey, index) => {
                                         if(objectKey !== keyName && typeof data[objectKey] !== 'object'){

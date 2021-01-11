@@ -21,12 +21,10 @@ const Menu = ({history}) => {
                 object.nombre = product.nombre;
                 object.precio = product.precio;
                 object.categorias = product.categorias;
-                //object.categorias = product.categorias;
                 return object;
             });
 
             foodListSaved = modifiedProductsList.slice();
-            console.log(modifiedProductsList);
             setFoodsList(modifiedProductsList);
 
         }).catch((error) => {
@@ -35,7 +33,11 @@ const Menu = ({history}) => {
 
     },[]);
 
-    const [tagsList,setTagsList] = useState([]);
+    const [selectedFood,setselectedFood] = useState({nombre:null,categorias:[]});
+
+    function onProductItemSelectedHandle(productItem){
+        setselectedFood(productItem);
+    }
 
     function onSearchBarKeyUpHandle(event){
         const searchBarValue = event.target.value;
@@ -52,19 +54,34 @@ const Menu = ({history}) => {
 
     function onCategorySelectChangeHandle(event){
         const selectedValue = event.target.value;
-        alert(selectedValue);
-        /*
-        if(selectedValue.length === 0){
+        
+        if(selectedValue === "todo"){
             setFoodsList(foodListSaved);
         }else{
+            let convertedValue = parseInt(selectedValue);
             let productsListCopy = foodListSaved.slice();
             let newProductsList = productsListCopy.filter((product) => {
-                return product.nombre.search(searchBarValue) !== -1;
+                for(let i = 0; i<product.categorias.length; i++){
+                    let categoryObject = product.categorias[i];
+                    if(categoryObject.id_categoria === convertedValue){
+                        return true;
+                    }
+                }
+                return false;
             });
             setFoodsList(newProductsList);
         }
-        */
+        
     }
+
+    const tagsShowerLayaout = selectedFood.categorias.length === 0 ? 'No hay etiquetas para mostrar!' : selectedFood.categorias.map((tag) => {
+        return (
+            <div className="chip" key={tag.id_categoria}>
+                {tag.nombre}
+                <i className="close material-icons">close</i>
+            </div>
+        );
+    });
 
     return (
         <React.Fragment>
@@ -77,23 +94,14 @@ const Menu = ({history}) => {
                     onCategorySelect={onCategorySelectChangeHandle}/>
 
                     <div className="Menu-table-container">
-                        <TableData headersList={['Nombre','Precio','Accion']} dataList = {foodsList} keyName="id_producto"/>
+                        <TableData headersList={['Nombre','Precio','Accion']} dataList = {foodsList} keyName="id_producto" selectedItemHandler={onProductItemSelectedHandle}/>
                     </div>
                 </div>
                 <div className="col s7 m3">
-                    <h3 style={{textAlign:'center'}}>Etiquetas asociadas</h3>
-
+                    <h5 style={{textAlign:'center'}}>{selectedFood.nombre !== null? `Etiquetas asociadas a '${selectedFood.nombre}'` : '¡Seleccione una comida para ver informacion aquí!'}</h5>
                     {
-                        tagsList.map((tag) => {
-                            return (
-                                <div className="chip" key={tag.id_categoria}>
-                                    {tag.nombre}
-                                    <i className="close material-icons">close</i>
-                                </div>
-                            );
-                        })
+                        tagsShowerLayaout
                     }
-                
                 </div>
             </div>
             <div className="Menu-floating-button">
